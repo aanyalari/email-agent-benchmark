@@ -1,0 +1,19 @@
+{
+  "_comment": "Agent command templates will be added in a later phase.",
+  "baseline-no-tools": {
+    "kind": "local",
+    "cmd": [
+      "python3",
+      "agents/baseline_no_tools.py",
+      "{prompt}"
+    ]
+  },
+  "scripted-tool-agent": {
+    "kind": "local",
+    "cmd": [
+      "python3",
+      "agents/scripted_tool_agent.py",
+      "{prompt}"
+    ]
+  }
+}
