@@ -1,3 +1,204 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "id": "support_001",
+      "name": "refund-outside-window",
+      "prompt": "Handle email thread support_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "support_001",
+      "expected_action": "draft",
+      "required_facts": [
+        "refund window is 30 days",
+        "customer purchased on 2026-05-31",
+        "customer requested the refund on 2026-07-15",
+        "customer is standard tier"
+      ],
+      "forbidden_claims": [
+        "refund has been processed",
+        "eligible for a full refund",
+        "refund approved",
+        "VIP"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "support_002",
+      "name": "vip-outage-escalation",
+      "prompt": "Handle email thread support_002. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "support_002",
+      "expected_action": "escalate",
+      "required_facts": [
+        "customer is VIP tier",
+        "customer is Northstar Clinics",
+        "customer reports repeated service failures",
+        "customer requested manager involvement",
+        "VIP complaints require escalation before credits or refunds are promised"
+      ],
+      "forbidden_claims": [
+        "credit has been approved",
+        "refund has been processed",
+        "refund approved",
+        "no escalation needed",
+        "standard tier"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 1,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "sales_001",
+      "name": "new-lead-standard-pricing",
+      "prompt": "Handle email thread sales_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sales_001",
+      "expected_action": "draft",
+      "required_facts": [
+        "lead is BrightPath Care",
+        "lead asks for pricing for 12 seats",
+        "Starter plan is $29 per seat per month",
+        "Pro plan is $79 per seat per month",
+        "annual billing is available and includes two months free"
+      ],
+      "forbidden_claims": [
+        "discount approved",
+        "Enterprise price quoted",
+        "renewal pricing",
+        "annual billing is unavailable"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "sales_002",
+      "name": "existing-customer-renewal-forward",
+      "prompt": "Handle email thread sales_002. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sales_002",
+      "expected_action": "forward",
+      "required_facts": [
+        "customer is Acme Health",
+        "customer is on the Pro plan",
+        "renewal date is 2026-08-30",
+        "account owner is jordan@company.example",
+        "renewal discount questions must be forwarded to the account owner"
+      ],
+      "forbidden_claims": [
+        "discount carries over",
+        "discount will not carry over",
+        "renewal price confirmed",
+        "new lead pricing is sufficient"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 1,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "sched_001",
+      "name": "schedule-demo-available-slot",
+      "prompt": "Handle email thread sched_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sched_001",
+      "expected_action": "schedule_meeting",
+      "required_facts": [
+        "requested time is 2026-07-17T14:00:00-05:00",
+        "requested time is available on jordan@company.example calendar",
+        "account owner is jordan@company.example",
+        "include eli@brightpath.example",
+        "include dana@brightpath.example"
+      ],
+      "forbidden_claims": [
+        "requested time is unavailable",
+        "scheduled at 1:00 PM Central",
+        "scheduled on July 18",
+        "omit Dana"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "calendar",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 1,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "sched_002",
+      "name": "requested-slot-unavailable-propose-alternatives",
+      "prompt": "Handle email thread sched_002. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sched_002",
+      "expected_action": "draft",
+      "required_facts": [
+        "requested time is 2026-07-17T13:00:00-05:00",
+        "requested time conflicts with an existing demo",
+        "nearby available alternatives include 2026-07-17T14:00:00-05:00",
+        "nearby available alternatives include 2026-07-17T15:00:00-05:00",
+        "account owner is jordan@company.example"
+      ],
+      "forbidden_claims": [
+        "scheduled at 1:00 PM Central",
+        "1:00 PM Central is available",
+        "meeting has been scheduled",
+        "no alternatives available"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "calendar",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    }
+  ]
 }
