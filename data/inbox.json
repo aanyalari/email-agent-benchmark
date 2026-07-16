@@ -1,3 +1,88 @@
 {
-  "threads": []
+  "threads": [
+    {
+      "thread_id": "support_001",
+      "category": "support",
+      "subject": "Refund request for Pro plan",
+      "messages": [
+        {
+          "message_id": "support_001_m1",
+          "from": "maya@acme.example",
+          "to": "support@company.example",
+          "timestamp": "2026-07-15T10:00:00-05:00",
+          "body": "Hi, I bought the Pro plan on May 31 and would like a refund. We tried it for our operations team, but it is not the right fit. Please process the refund back to the original card."
+        }
+      ]
+    },
+    {
+      "thread_id": "support_002",
+      "category": "support",
+      "subject": "This outage is unacceptable",
+      "messages": [
+        {
+          "message_id": "support_002_m1",
+          "from": "priya@northstar.example",
+          "to": "support@company.example",
+          "timestamp": "2026-07-15T11:20:00-05:00",
+          "body": "We are a VIP customer and your export outage blocked our morning executive report. This is the third issue this quarter. I want a manager involved today, and I want to know what credit or refund you are offering before we renew."
+        }
+      ]
+    },
+    {
+      "thread_id": "sales_001",
+      "category": "sales",
+      "subject": "Pricing for 12 seats",
+      "messages": [
+        {
+          "message_id": "sales_001_m1",
+          "from": "eli@brightpath.example",
+          "to": "sales@company.example",
+          "timestamp": "2026-07-15T09:15:00-05:00",
+          "body": "Hello, we are evaluating tools for a 12-person care coordination team. Can you send pricing for 12 seats and let me know whether you support annual billing?"
+        }
+      ]
+    },
+    {
+      "thread_id": "sales_002",
+      "category": "sales",
+      "subject": "Renewal pricing question",
+      "messages": [
+        {
+          "message_id": "sales_002_m1",
+          "from": "maya@acme.example",
+          "to": "sales@company.example",
+          "timestamp": "2026-07-15T13:05:00-05:00",
+          "body": "Our renewal is coming up next month. Can you confirm whether our current Pro plan discount carries over, or should we expect different renewal pricing?"
+        }
+      ]
+    },
+    {
+      "thread_id": "sched_001",
+      "category": "scheduling",
+      "subject": "Demo time works",
+      "messages": [
+        {
+          "message_id": "sched_001_m1",
+          "from": "eli@brightpath.example",
+          "to": "sales@company.example",
+          "timestamp": "2026-07-15T14:10:00-05:00",
+          "body": "Thanks for the pricing information. Friday July 17 at 2:00 PM Central works for our demo. Please include my teammate Dana at dana@brightpath.example."
+        }
+      ]
+    },
+    {
+      "thread_id": "sched_002",
+      "category": "scheduling",
+      "subject": "Can we meet Friday at 1?",
+      "messages": [
+        {
+          "message_id": "sched_002_m1",
+          "from": "sam@greenleaf.example",
+          "to": "sales@company.example",
+          "timestamp": "2026-07-15T15:35:00-05:00",
+          "body": "Could we schedule a 30-minute product demo this Friday, July 17 at 1:00 PM Central? If that is not open, please send a couple of nearby options."
+        }
+      ]
+    }
+  ]
 }

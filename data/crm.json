@@ -1,4 +1,79 @@
 {
-  "contacts": [],
-  "companies": []
+  "contacts": [
+    {
+      "email": "maya@acme.example",
+      "name": "Maya Chen",
+      "company_id": "acme",
+      "role": "Operations Manager",
+      "tier": "standard",
+      "account_owner": "jordan@company.example",
+      "customer_since": "2026-05-31"
+    },
+    {
+      "email": "priya@northstar.example",
+      "name": "Priya Raman",
+      "company_id": "northstar",
+      "role": "VP of Operations",
+      "tier": "vip",
+      "account_owner": "taylor@company.example",
+      "customer_since": "2025-02-14"
+    },
+    {
+      "email": "eli@brightpath.example",
+      "name": "Eli Morgan",
+      "company_id": "brightpath",
+      "role": "Director of Care Coordination",
+      "tier": "prospect",
+      "account_owner": "jordan@company.example",
+      "customer_since": null
+    },
+    {
+      "email": "dana@brightpath.example",
+      "name": "Dana Lopez",
+      "company_id": "brightpath",
+      "role": "Clinical Operations Lead",
+      "tier": "prospect",
+      "account_owner": "jordan@company.example",
+      "customer_since": null
+    },
+    {
+      "email": "sam@greenleaf.example",
+      "name": "Sam Patel",
+      "company_id": "greenleaf",
+      "role": "Practice Administrator",
+      "tier": "prospect",
+      "account_owner": "jordan@company.example",
+      "customer_since": null
+    }
+  ],
+  "companies": [
+    {
+      "company_id": "acme",
+      "name": "Acme Health",
+      "deal_stage": "customer",
+      "plan": "pro",
+      "renewal_date": "2026-08-30"
+    },
+    {
+      "company_id": "northstar",
+      "name": "Northstar Clinics",
+      "deal_stage": "customer",
+      "plan": "enterprise",
+      "renewal_date": "2026-08-01"
+    },
+    {
+      "company_id": "brightpath",
+      "name": "BrightPath Care",
+      "deal_stage": "qualified_lead",
+      "plan": null,
+      "renewal_date": null
+    },
+    {
+      "company_id": "greenleaf",
+      "name": "Greenleaf Family Medicine",
+      "deal_stage": "new_lead",
+      "plan": null,
+      "renewal_date": null
+    }
+  ]
 }
