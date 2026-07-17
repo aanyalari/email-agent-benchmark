@@ -180,14 +180,11 @@ evidence, scheduled the wrong attendee, or promised something the policy forbids
 | Statistic | What it measures | How to interpret it |
 |---|---|---|
 | Pass rate | runs with no grading reasons | strict end-to-end task success |
-| Fact ID coverage | required structured evidence IDs recorded on the action | whether the agent proved the right facts |
+| Evidence coverage | required structured evidence IDs recorded on the action | whether the agent proved the right facts |
 | Action accuracy | correct primary ledger action | whether the workflow choice was right |
 | Tool categories ok | expected evidence categories used | whether the agent gathered the required kinds of context |
-| Required facts text ok | legacy exact-text fact check | secondary prose signal, not the main structured score |
 | Forbidden claims ok | unsafe claims absent | whether the agent avoided prohibited promises |
-| CRM ok | CRM evidence used when required | account/customer grounding |
 | Calendar ok | meeting constraints satisfied | scheduling correctness |
-| Critical tool calls ok | no failed action-category tool calls | whether final workflow actions succeeded cleanly |
 | Tool calls | logged MCP or adapter tool calls | evidence-gathering activity, not quality by itself |
 | Failed tool calls | logged tool errors | tool reliability or agent misuse signal |
 | Wall seconds | run duration | runtime cost; higher time is not automatically better |
@@ -201,16 +198,16 @@ The current local validation confirms the benchmark harness works.
 Command:
 
 ```bash
-python3 runner.py --agents baseline_no_tools,scripted_tool_agent --runs-dir /tmp/email-structured-starter --timeout 60
-python3 report.py --runs-dir /tmp/email-structured-starter
+python3 runner.py --agents baseline_no_tools,scripted_tool_agent --runs-dir /tmp/email-mvp-metrics-starter --timeout 60
+python3 report.py --runs-dir /tmp/email-mvp-metrics-starter
 ```
 
 Result:
 
-| Agent | Passes | Fact ID coverage | Average calls | Failed calls | Average wall time |
-|---|---:|---:|---:|---:|---:|
-| `baseline_no_tools` | 0/6 | 0/6 | 0.0 | 0 | 0.0s |
-| `scripted_tool_agent` | 6/6 | 6/6 | 4.8 | 0 | 0.1s |
+| Agent | Passes | Action | Evidence | Tools | Safe | Calendar | Average calls | Failed calls | Average wall time |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `baseline_no_tools` | 0/6 | 0/6 | 0/6 | 0/6 | 6/6 | 5/6 | 0.0 | 0 | 0.0s |
+| `scripted_tool_agent` | 6/6 | 6/6 | 6/6 | 6/6 | 6/6 | 6/6 | 4.8 | 0 | 0.1s |
 
 This is the expected health signal. The baseline fails because it does not write
 ledger actions or use evidence tools. The scripted agent passes because it is a
@@ -221,15 +218,15 @@ deterministic smoke-test adapter.
 Command:
 
 ```bash
-python3 runner.py --agents scripted_tool_agent --tasks-file tasks/tasks_hard.json --runs-dir /tmp/email-structured-hard --timeout 60
-python3 report.py --runs-dir /tmp/email-structured-hard
+python3 runner.py --agents scripted_tool_agent --tasks-file tasks/tasks_hard.json --runs-dir /tmp/email-mvp-metrics-hard --timeout 60
+python3 report.py --runs-dir /tmp/email-mvp-metrics-hard --tasks-file tasks/tasks_hard.json
 ```
 
 Result:
 
-| Agent | Passes | Fact ID coverage | Average calls | Failed calls | Average wall time |
-|---|---:|---:|---:|---:|---:|
-| `scripted_tool_agent` | 10/10 | 10/10 | 4.2 | 0 | 0.1s |
+| Agent | Passes | Action | Evidence | Tools | Safe | Calendar | Average calls | Failed calls | Average wall time |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `scripted_tool_agent` | 10/10 | 10/10 | 10/10 | 10/10 | 10/10 | 10/10 | 4.2 | 0 | 0.1s |
 
 This confirms the hard task suite, MCP server, ledger schema, and grader are
 coherent end to end.
@@ -247,9 +244,9 @@ python3 report.py --runs-dir results/codex-starter-structured-v2
 
 Result:
 
-| Agent | Passes | Fact ID coverage | Average calls | Failed calls | Average wall time |
-|---|---:|---:|---:|---:|---:|
-| `codex` | 3/6 | 4/6 | 7.5 | 0 | 135.5s |
+| Agent | Passes | Action | Evidence | Tools | Safe | Calendar | Average calls | Failed calls | Average wall time |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `codex` | 3/6 | 6/6 | 4/6 | 6/6 | 6/6 | 5/6 | 7.5 | 0 | 135.5s |
 
 Task-level result:
 

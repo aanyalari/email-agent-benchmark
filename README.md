@@ -217,27 +217,21 @@ Artifact meanings:
 - `warnings`: non-fatal issues, including malformed tool logs or failed tool
   calls
 - `action_accuracy`: whether the expected primary ledger action was recorded
-- `required_facts_ok`: compatibility field; uses structured fact IDs when
-  present, otherwise falls back to legacy text facts
 - `required_fact_ids_ok`: whether required fact IDs were recorded in action
   evidence
-- `required_facts_text_ok`: whether legacy prose facts appeared in the relevant
-  action text
 - `forbidden_claims_ok`: whether prohibited claims were avoided
 - `calendar_ok`: whether scheduled meetings satisfy calendar constraints
-- `crm_ok`: whether required CRM tool evidence was used
 - `tool_categories_ok`: whether the expected source categories were used
-- `critical_tool_calls_ok`: whether action tools avoided failed calls
 - `evidence_fact_ids`: fact IDs recorded on the expected action
 - `n_tool_calls`: number of logged tool calls
 - `n_failed_tool_calls`: number of logged failed tool calls
-- `n_failed_action_tool_calls`: number of failed action-category tool calls
 - `wall_s`: wall-clock runtime in seconds, added by `runner.py`
 
 `report.py` summarizes the latest `runs/summary.json` when present, falling back
 to `runs/*/*/result.json` files if no summary exists. It prints a task-by-agent
-matrix, per-agent pass rates, average tool calls, failed tool call counts,
-average wall time, and failure reasons.
+matrix, per-agent pass rate, action accuracy, evidence coverage, tool category
+coverage, safety checks, calendar checks, average tool calls, failed tool call
+counts, average wall time, and failure reasons.
 
 ## Current Limitations
 
@@ -245,10 +239,11 @@ average wall time, and failure reasons.
   `tasks/tasks_hard.json`. Real CLI-agent runs depend on the configured CLI's
   local auth and network availability.
 - The deterministic scripted agent is a wiring check, not a real model result.
-- Grading is intentionally exact and local. Required facts are primarily checked
-  through structured evidence fact IDs; legacy prose fact checks are non-blocking
-  warnings when `required_fact_ids` are present. Forbidden claims are still
-  checked with string matching over the relevant ledger text.
+- Grading is intentionally exact and local. Required facts are checked through
+  structured evidence fact IDs when `required_fact_ids` are present. Legacy prose
+  fact checks are only used for older tasks that do not define structured fact
+  IDs. Forbidden claims are still checked with string matching over the relevant
+  ledger text.
 - The grader checks tool categories, not full reasoning quality.
 - Tone, concision, and user experience quality are only indirectly evaluated.
 - `runs/` is ignored by git, so benchmark outputs are local unless explicitly

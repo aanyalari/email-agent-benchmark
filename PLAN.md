@@ -806,10 +806,11 @@ optional data files
   "reasons": [],
   "warnings": [],
   "action_accuracy": true,
-  "required_facts_ok": true,
+  "required_fact_ids_ok": true,
   "forbidden_claims_ok": true,
   "calendar_ok": true,
-  "crm_ok": true,
+  "tool_categories_ok": true,
+  "evidence_fact_ids": ["refund_policy.window_30_days"],
   "n_tool_calls": 4,
   "n_failed_tool_calls": 0,
   "wall_s": 0.5

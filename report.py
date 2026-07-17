@@ -108,6 +108,10 @@ def _status_cell(runs):
     return f"{passed}/{len(runs)}"
 
 
+def _count_true(results, field):
+    return sum(1 for result in results if result.get(field) is True)
+
+
 def _print_table(headers, rows):
     widths = [len(header) for header in headers]
     for row in rows:
@@ -123,14 +127,22 @@ def _print_table(headers, rows):
 def _agent_summary(agent, results):
     total = len(results)
     passed = sum(1 for result in results if result.get("passed") is True)
-    fact_ids_ok = sum(1 for result in results if result.get("required_fact_ids_ok") is not False)
+    action_ok = _count_true(results, "action_accuracy")
+    evidence_ok = _count_true(results, "required_fact_ids_ok")
+    tools_ok = _count_true(results, "tool_categories_ok")
+    safe_ok = _count_true(results, "forbidden_claims_ok")
+    calendar_ok = _count_true(results, "calendar_ok")
     avg_calls = sum(float(result.get("n_tool_calls", 0) or 0) for result in results) / total
     failed_calls = sum(int(result.get("n_failed_tool_calls", 0) or 0) for result in results)
     avg_wall = sum(float(result.get("wall_s", 0) or 0) for result in results) / total
     return [
         agent,
         f"{passed}/{total}",
-        f"{fact_ids_ok}/{total}",
+        f"{action_ok}/{total}",
+        f"{evidence_ok}/{total}",
+        f"{tools_ok}/{total}",
+        f"{safe_ok}/{total}",
+        f"{calendar_ok}/{total}",
         f"{avg_calls:.1f}",
         str(failed_calls),
         f"{avg_wall:.1f}s",
@@ -182,7 +194,18 @@ def print_report(results, task_order):
         for agent in agents
     ]
     _print_table(
-        ["agent", "pass", "fact ids", "avg calls", "failed calls", "avg wall"],
+        [
+            "agent",
+            "pass",
+            "action",
+            "evidence",
+            "tools",
+            "safe",
+            "calendar",
+            "avg calls",
+            "failed calls",
+            "avg wall",
+        ],
         summary_rows,
     )
 
