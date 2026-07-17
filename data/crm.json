@@ -44,6 +44,69 @@
       "tier": "prospect",
       "account_owner": "jordan@company.example",
       "customer_since": null
+    },
+    {
+      "email": "robin@acme.example",
+      "name": "Robin Singh",
+      "company_id": "acme",
+      "role": "Expansion Lead",
+      "tier": "standard",
+      "account_owner": "jordan@company.example",
+      "customer_since": "2026-05-31"
+    },
+    {
+      "email": "alex@evergreen.example",
+      "name": "Alex Rivera",
+      "company_id": "evergreen_hospital",
+      "role": "Finance Director",
+      "tier": "standard",
+      "account_owner": "taylor@company.example",
+      "customer_since": "2025-11-01"
+    },
+    {
+      "email": "alex@evergreenlabs.example",
+      "name": "Alex Kim",
+      "company_id": "evergreen_labs",
+      "role": "Operations Lead",
+      "tier": "prospect",
+      "account_owner": "jordan@company.example",
+      "customer_since": null
+    },
+    {
+      "email": "lee@northstar.example",
+      "name": "Lee Morgan",
+      "company_id": "northstar",
+      "role": "Director of Revenue Operations",
+      "tier": "vip",
+      "account_owner": "taylor@company.example",
+      "customer_since": "2025-02-14"
+    },
+    {
+      "email": "casey@ridgeview.example",
+      "name": "Casey Nguyen",
+      "company_id": "ridgeview",
+      "role": "Clinic Administrator",
+      "tier": "prospect",
+      "account_owner": "jordan@company.example",
+      "customer_since": null
+    },
+    {
+      "email": "nina@acme.example",
+      "name": "Nina Brooks",
+      "company_id": "acme",
+      "role": "Procurement Manager",
+      "tier": "standard",
+      "account_owner": "jordan@company.example",
+      "customer_since": "2026-05-31"
+    },
+    {
+      "email": "pat@northstar.example",
+      "name": "Pat Gomez",
+      "company_id": "northstar",
+      "role": "Security Coordinator",
+      "tier": "vip",
+      "account_owner": "taylor@company.example",
+      "customer_since": "2025-02-14"
     }
   ],
   "companies": [
@@ -72,6 +135,27 @@
       "company_id": "greenleaf",
       "name": "Greenleaf Family Medicine",
       "deal_stage": "new_lead",
+      "plan": null,
+      "renewal_date": null
+    },
+    {
+      "company_id": "evergreen_hospital",
+      "name": "Evergreen Hospital",
+      "deal_stage": "customer",
+      "plan": "pro",
+      "renewal_date": "2026-09-15"
+    },
+    {
+      "company_id": "evergreen_labs",
+      "name": "Evergreen Labs",
+      "deal_stage": "qualified_lead",
+      "plan": null,
+      "renewal_date": null
+    },
+    {
+      "company_id": "ridgeview",
+      "name": "Ridgeview Therapy Group",
+      "deal_stage": "qualified_lead",
       "plan": null,
       "renewal_date": null
     }

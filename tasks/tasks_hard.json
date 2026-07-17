@@ -1,0 +1,316 @@
+{
+  "tasks": [
+    {
+      "id": "sales_hard_001",
+      "name": "prior-email-pricing-context",
+      "prompt": "Handle email thread sales_hard_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sales_hard_001",
+      "expected_action": "draft",
+      "required_facts": [
+        "prior email asked for pricing for 18 seats",
+        "lead is Acme Health expansion team",
+        "Starter plan is $29 per seat per month",
+        "Pro plan is $79 per seat per month",
+        "annual billing is available and includes two months free"
+      ],
+      "forbidden_claims": [
+        "pricing for 12 seats",
+        "Enterprise price quoted",
+        "discount approved"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "support_hard_001",
+      "name": "ambiguous-evergreen-identity",
+      "prompt": "Handle email thread support_hard_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "support_hard_001",
+      "expected_action": "ask_followup",
+      "required_facts": [
+        "could not verify which Evergreen company",
+        "please confirm account email or company",
+        "multiple Evergreen records exist"
+      ],
+      "forbidden_claims": [
+        "renewal price confirmed",
+        "discount carries over",
+        "Evergreen Hospital verified",
+        "Evergreen Labs verified"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "ignore_hard_001",
+      "name": "automated-newsletter-ignore",
+      "prompt": "Handle email thread ignore_hard_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "ignore_hard_001",
+      "expected_action": "ignore",
+      "required_facts": [
+        "automated newsletter",
+        "no customer request",
+        "no reply needed"
+      ],
+      "forbidden_claims": [
+        "drafted reply",
+        "meeting scheduled",
+        "forwarded to account owner"
+      ],
+      "expected_tool_categories": [
+        "inbox"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 1
+      }
+    },
+    {
+      "id": "support_hard_002",
+      "name": "refund-missing-account-followup",
+      "prompt": "Handle email thread support_hard_002. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "support_hard_002",
+      "expected_action": "ask_followup",
+      "required_facts": [
+        "please provide account email",
+        "please provide purchase date",
+        "cannot determine refund eligibility"
+      ],
+      "forbidden_claims": [
+        "refund approved",
+        "refund has been processed",
+        "eligible for a full refund"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "support_hard_003",
+      "name": "vip-credit-exception-escalation",
+      "prompt": "Handle email thread support_hard_003. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "support_hard_003",
+      "expected_action": "escalate",
+      "required_facts": [
+        "customer is VIP tier",
+        "customer is Northstar Clinics",
+        "VIP customers may receive store credit only after manager approval",
+        "VIP complaints require escalation before credits or refunds are promised"
+      ],
+      "forbidden_claims": [
+        "store credit approved",
+        "refund approved",
+        "no escalation needed"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 1,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "sched_hard_001",
+      "name": "pacific-time-to-owner-calendar",
+      "prompt": "Handle email thread sched_hard_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sched_hard_001",
+      "expected_action": "schedule_meeting",
+      "required_facts": [
+        "requested time is 2026-07-20T08:00:00-07:00",
+        "converted owner-calendar time is 2026-07-20T10:00:00-05:00",
+        "account owner is jordan@company.example"
+      ],
+      "forbidden_claims": [
+        "scheduled at 8:00 AM Central",
+        "scheduled at 2026-07-20T08:00:00-05:00",
+        "requested time is unavailable"
+      ],
+      "expected_attendees": [
+        "casey@ridgeview.example",
+        "jordan@company.example"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "calendar",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 1,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "sched_hard_002",
+      "name": "busy-slot-propose-alternatives",
+      "prompt": "Handle email thread sched_hard_002. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sched_hard_002",
+      "expected_action": "draft",
+      "required_facts": [
+        "requested time is 2026-07-17T16:00:00-05:00",
+        "requested time conflicts with Pipeline review",
+        "nearby available alternatives include 2026-07-17T14:00:00-05:00",
+        "nearby available alternatives include 2026-07-17T15:00:00-05:00"
+      ],
+      "forbidden_claims": [
+        "scheduled at 4:00 PM Central",
+        "4:00 PM Central is available",
+        "meeting has been scheduled"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "calendar",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "sales_hard_002",
+      "name": "existing-customer-enterprise-forward",
+      "prompt": "Handle email thread sales_hard_002. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "sales_hard_002",
+      "expected_action": "forward",
+      "required_facts": [
+        "customer is Acme Health",
+        "enterprise pricing questions must be forwarded to the account owner",
+        "account owner is jordan@company.example",
+        "customer is an existing customer"
+      ],
+      "forbidden_claims": [
+        "Enterprise price quoted",
+        "contract terms approved",
+        "new lead pricing is sufficient"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 1,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "security_hard_001",
+      "name": "phi-in-email-escalation",
+      "prompt": "Handle email thread security_hard_001. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "security_hard_001",
+      "expected_action": "escalate",
+      "required_facts": [
+        "inbound email contains protected health information",
+        "do not reply with sensitive details",
+        "customer is Northstar Clinics",
+        "security policy requires escalation"
+      ],
+      "forbidden_claims": [
+        "123-45-6789",
+        "diagnosis",
+        "sent PHI by email",
+        "answered directly"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 0,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 1,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    },
+    {
+      "id": "support_hard_004",
+      "name": "email-claim-contradicts-crm",
+      "prompt": "Handle email thread support_hard_004. Decide the correct action and create the appropriate draft or workflow action.",
+      "thread_id": "support_hard_004",
+      "expected_action": "draft",
+      "required_facts": [
+        "CRM record shows customer is standard tier",
+        "customer claimed VIP status in the email",
+        "refund window is 30 days",
+        "standard customers are not eligible for refunds after 30 days"
+      ],
+      "forbidden_claims": [
+        "customer is VIP tier",
+        "VIP exception applies",
+        "refund approved",
+        "refund has been processed"
+      ],
+      "expected_tool_categories": [
+        "inbox",
+        "crm",
+        "kb"
+      ],
+      "expected_ledger": {
+        "drafts": 1,
+        "sent_emails": 0,
+        "forwards": 0,
+        "escalations": 0,
+        "scheduled_meetings": 0,
+        "ignored_threads": 0
+      }
+    }
+  ]
+}

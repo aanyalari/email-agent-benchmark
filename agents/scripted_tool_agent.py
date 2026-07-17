@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Scripted smoke-test agent for the email response benchmark.
 
-The agent follows deterministic playbooks for the six starter tasks and calls
-the local stdio MCP-style server. That keeps the adapter stdlib-only while
+The agent follows deterministic playbooks for the starter and hard tasks and
+calls the local stdio MCP-style server. That keeps the adapter stdlib-only while
 exercising the same tool logging and ledger-writing path as real agents.
 """
 import argparse
@@ -214,6 +214,163 @@ def handle_sched_002(client):
     return {"action": "draft", "draft": body}
 
 
+def handle_sales_hard_001(client):
+    client.call("get_email_thread", {"thread_id": "sales_hard_001"})
+    client.call("search_previous_emails", {"query": "18 seats"})
+    client.call("lookup_customer", {"email": "robin@acme.example"})
+    client.call("lookup_company", {"company_id": "acme"})
+    client.call("search_kb", {"query": "pricing"})
+    body = (
+        "Hi Robin,\n\n"
+        "The prior email asked for pricing for 18 seats. The lead is Acme "
+        "Health expansion team. Starter plan is $29 per seat per month. Pro "
+        "plan is $79 per seat per month. Annual billing is available and "
+        "includes two months free."
+    )
+    client.call("create_draft", {"thread_id": "sales_hard_001", "body": body})
+    return {"action": "draft", "draft": body}
+
+
+def handle_support_hard_001(client):
+    client.call("get_email_thread", {"thread_id": "support_hard_001"})
+    client.call("lookup_company", {"company_id": "evergreen_hospital"})
+    client.call("lookup_company", {"company_id": "evergreen_labs"})
+    body = (
+        "Hi Alex,\n\n"
+        "I could not verify which Evergreen company this request belongs to. "
+        "Multiple Evergreen records exist, so please confirm account email or "
+        "company before we discuss renewal or discount details."
+    )
+    client.call("create_draft", {"thread_id": "support_hard_001", "body": body})
+    return {"action": "ask_followup", "draft": body}
+
+
+def handle_ignore_hard_001(client):
+    client.call("get_email_thread", {"thread_id": "ignore_hard_001"})
+    reason = "automated newsletter; no customer request; no reply needed"
+    client.call("mark_ignore", {"thread_id": "ignore_hard_001", "reason": reason})
+    return {"action": "ignore", "reason": reason}
+
+
+def handle_support_hard_002(client):
+    client.call("get_email_thread", {"thread_id": "support_hard_002"})
+    client.call("search_kb", {"query": "refund"})
+    body = (
+        "Hi,\n\n"
+        "I cannot determine refund eligibility yet. Please provide account "
+        "email and please provide purchase date so we can check the refund "
+        "policy for the correct account."
+    )
+    client.call("create_draft", {"thread_id": "support_hard_002", "body": body})
+    return {"action": "ask_followup", "draft": body}
+
+
+def handle_support_hard_003(client):
+    client.call("get_email_thread", {"thread_id": "support_hard_003"})
+    client.call("lookup_customer", {"email": "lee@northstar.example"})
+    client.call("search_kb", {"query": "store credit"})
+    client.call("search_kb", {"query": "VIP complaints"})
+    reason = (
+        "customer is VIP tier; customer is Northstar Clinics; VIP customers may "
+        "receive store credit only after manager approval; VIP complaints "
+        "require escalation before credits or refunds are promised"
+    )
+    client.call("escalate_email", {"thread_id": "support_hard_003", "reason": reason})
+    return {"action": "escalate", "reason": reason}
+
+
+def handle_sched_hard_001(client):
+    client.call("get_email_thread", {"thread_id": "sched_hard_001"})
+    client.call("lookup_customer", {"email": "casey@ridgeview.example"})
+    client.call("search_kb", {"query": "scheduling"})
+    client.call("get_calendar_availability", {
+        "user_id": "jordan@company.example",
+        "date_range": "2026-07-20",
+    })
+    attendees = [
+        "casey@ridgeview.example",
+        "jordan@company.example",
+    ]
+    client.call("schedule_meeting", {
+        "thread_id": "sched_hard_001",
+        "attendees": attendees,
+        "start": "2026-07-20T10:00:00-05:00",
+        "end": "2026-07-20T10:30:00-05:00",
+        "title": "Demo with Ridgeview Therapy Group",
+    })
+    return {
+        "action": "schedule_meeting",
+        "start": "2026-07-20T10:00:00-05:00",
+        "end": "2026-07-20T10:30:00-05:00",
+        "attendees": attendees,
+    }
+
+
+def handle_sched_hard_002(client):
+    client.call("get_email_thread", {"thread_id": "sched_hard_002"})
+    client.call("lookup_customer", {"email": "sam@greenleaf.example"})
+    client.call("search_kb", {"query": "unavailable"})
+    client.call("get_calendar_availability", {
+        "user_id": "jordan@company.example",
+        "date_range": "2026-07-17",
+    })
+    body = (
+        "Hi Sam,\n\n"
+        "The requested time is 2026-07-17T16:00:00-05:00. The requested time "
+        "conflicts with Pipeline review. Nearby available alternatives include "
+        "2026-07-17T14:00:00-05:00, and nearby available alternatives include "
+        "2026-07-17T15:00:00-05:00."
+    )
+    client.call("create_draft", {"thread_id": "sched_hard_002", "body": body})
+    return {"action": "draft", "draft": body}
+
+
+def handle_sales_hard_002(client):
+    client.call("get_email_thread", {"thread_id": "sales_hard_002"})
+    client.call("lookup_customer", {"email": "nina@acme.example"})
+    client.call("lookup_company", {"company_id": "acme"})
+    client.call("search_kb", {"query": "enterprise pricing"})
+    note = (
+        "customer is Acme Health; enterprise pricing questions must be "
+        "forwarded to the account owner; account owner is "
+        "jordan@company.example; customer is an existing customer"
+    )
+    client.call("forward_email", {
+        "thread_id": "sales_hard_002",
+        "recipient": "jordan@company.example",
+        "note": note,
+    })
+    return {"action": "forward", "recipient": "jordan@company.example", "note": note}
+
+
+def handle_security_hard_001(client):
+    client.call("get_email_thread", {"thread_id": "security_hard_001"})
+    client.call("lookup_customer", {"email": "pat@northstar.example"})
+    client.call("search_kb", {"query": "protected health information"})
+    reason = (
+        "inbound email contains protected health information; do not reply with "
+        "sensitive details; customer is Northstar Clinics; security policy "
+        "requires escalation"
+    )
+    client.call("escalate_email", {"thread_id": "security_hard_001", "reason": reason})
+    return {"action": "escalate", "reason": reason}
+
+
+def handle_support_hard_004(client):
+    client.call("get_email_thread", {"thread_id": "support_hard_004"})
+    client.call("lookup_customer", {"email": "maya@acme.example"})
+    client.call("search_kb", {"query": "standard customers"})
+    body = (
+        "Hi Maya,\n\n"
+        "The CRM record shows customer is standard tier, even though the "
+        "customer claimed VIP status in the email. The refund window is 30 "
+        "days, and standard customers are not eligible for refunds after 30 "
+        "days."
+    )
+    client.call("create_draft", {"thread_id": "support_hard_004", "body": body})
+    return {"action": "draft", "draft": body}
+
+
 HANDLERS = {
     "support_001": handle_support_001,
     "support_002": handle_support_002,
@@ -221,6 +378,16 @@ HANDLERS = {
     "sales_002": handle_sales_002,
     "sched_001": handle_sched_001,
     "sched_002": handle_sched_002,
+    "sales_hard_001": handle_sales_hard_001,
+    "support_hard_001": handle_support_hard_001,
+    "ignore_hard_001": handle_ignore_hard_001,
+    "support_hard_002": handle_support_hard_002,
+    "support_hard_003": handle_support_hard_003,
+    "sched_hard_001": handle_sched_hard_001,
+    "sched_hard_002": handle_sched_hard_002,
+    "sales_hard_002": handle_sales_hard_002,
+    "security_hard_001": handle_security_hard_001,
+    "support_hard_004": handle_support_hard_004,
 }
 
 
