@@ -1,0 +1,6 @@
+{"arguments": {"thread_id": "sched_001"}, "category": "inbox", "error": "", "ok": true, "tool": "get_email_thread", "ts": 1784325376.405249}
+{"arguments": {"email": "eli@brightpath.example"}, "category": "crm", "error": "", "ok": true, "tool": "lookup_customer", "ts": 1784325376.405526}
+{"arguments": {"email": "dana@brightpath.example"}, "category": "crm", "error": "", "ok": true, "tool": "lookup_customer", "ts": 1784325376.40566}
+{"arguments": {"query": "scheduling"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784325376.406004}
+{"arguments": {"date_range": "2026-07-17", "user_id": "jordan@company.example"}, "category": "calendar", "error": "", "ok": true, "tool": "get_calendar_availability", "ts": 1784325376.4061272}
+{"arguments": {"attendees": ["eli@brightpath.example", "dana@brightpath.example", "jordan@company.example"], "end": "2026-07-17T14:30:00-05:00", "start": "2026-07-17T14:00:00-05:00", "thread_id": "sched_001", "title": "Demo with BrightPath Care"}, "category": "action", "error": "", "ok": true, "tool": "schedule_meeting", "ts": 1784325376.406463}

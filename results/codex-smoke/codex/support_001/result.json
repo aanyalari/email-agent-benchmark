@@ -1,0 +1,40 @@
+{
+  "action_accuracy": false,
+  "agent": "codex",
+  "agent_kind": "codex",
+  "calendar_ok": true,
+  "crm_ok": false,
+  "exit_code": -1,
+  "exit_status": "spawn_error",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 0,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 0,
+  "passed": false,
+  "reasons": [
+    "expected drafts count 1, got 0",
+    "expected primary action 'draft' in ledger field 'drafts'",
+    "missing required fact: refund window is 30 days",
+    "missing required fact: customer purchased on 2026-05-31",
+    "missing required fact: customer requested the refund on 2026-07-15",
+    "missing required fact: customer is standard tier",
+    "expected tool category 'inbox' was not used",
+    "expected tool category 'crm' was not used",
+    "expected tool category 'kb' was not used"
+  ],
+  "required_facts_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-smoke/codex/support_001",
+  "task_id": "support_001",
+  "tool_categories": [],
+  "tool_categories_ok": false,
+  "wall_s": 0.0,
+  "warnings": []
+}

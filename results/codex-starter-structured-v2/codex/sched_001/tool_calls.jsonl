@@ -1,0 +1,10 @@
+{"arguments": {"thread_id": "sched_001"}, "category": "inbox", "error": "", "ok": true, "tool": "get_email_thread", "ts": 1784327988.013709}
+{"arguments": {"email": "eli@brightpath.example"}, "category": "crm", "error": "", "ok": true, "tool": "lookup_customer", "ts": 1784327992.9072902}
+{"arguments": {"email": "dana@brightpath.example"}, "category": "crm", "error": "", "ok": true, "tool": "lookup_customer", "ts": 1784327992.909556}
+{"arguments": {"query": "scheduling demo meeting"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784327992.9142022}
+{"arguments": {"query": "calendar availability scheduling"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784327992.922219}
+{"arguments": {"date_range": {"end": "2026-07-18T00:00:00-05:00", "start": "2026-07-17T00:00:00-05:00"}, "user_id": "jordan@company.example"}, "category": "calendar", "error": "", "ok": true, "tool": "get_calendar_availability", "ts": 1784328629.4564}
+{"arguments": {"query": "demo duration"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784328629.471543}
+{"arguments": {"query": "meeting duration"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784328629.4727008}
+{"arguments": {"query": "scheduling policy"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784328629.473603}
+{"arguments": {"attendees": ["eli@brightpath.example", "dana@brightpath.example"], "end": "2026-07-17T14:30:00-05:00", "evidence": ["sched_001.requested_time_2026_07_17_14_00_ct", "sched_001.attendee_eli", "sched_001.attendee_dana", "eli.account_owner_jordan", "brightpath.company_name", "jordan.calendar_2026_07_17_14_00_available"], "start": "2026-07-17T14:00:00-05:00", "thread_id": "sched_001", "title": "Demo with BrightPath Care"}, "category": "action", "error": "", "ok": true, "tool": "schedule_meeting", "ts": 1784328639.655356}

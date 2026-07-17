@@ -1,0 +1,56 @@
+{
+  "action_accuracy": true,
+  "agent": "codex",
+  "agent_kind": "codex",
+  "calendar_ok": true,
+  "critical_tool_calls_ok": true,
+  "crm_ok": true,
+  "evidence_fact_ids": [
+    "pricing.annual_billing_two_months_free",
+    "pricing.pro_79_per_seat",
+    "pricing.starter_29_per_seat",
+    "sales_001.pricing_for_12_seats"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 1,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [
+    "brightpath.company_name"
+  ],
+  "n_failed_action_tool_calls": 0,
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 7,
+  "passed": false,
+  "reasons": [
+    "missing required fact id: brightpath.company_name"
+  ],
+  "required_fact_ids_ok": false,
+  "required_facts_ok": false,
+  "required_facts_text_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-starter-structured-v2/codex/sales_001",
+  "task_id": "sales_001",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 26.2,
+  "warnings": [
+    "legacy text check: missing required fact: lead is BrightPath Care",
+    "legacy text check: missing required fact: lead asks for pricing for 12 seats",
+    "legacy text check: missing required fact: Starter plan is $29 per seat per month",
+    "legacy text check: missing required fact: Pro plan is $79 per seat per month",
+    "legacy text check: missing required fact: annual billing is available and includes two months free"
+  ]
+}

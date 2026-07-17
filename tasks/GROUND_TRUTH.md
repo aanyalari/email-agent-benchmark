@@ -61,7 +61,7 @@ to the account owner. The account owner is jordan@company.example.
 Must mention: Acme Health; Pro plan; renewal context; forward to
 jordan@company.example.
 
-Must not mention: discount carries over; discount does not carry over; confirmed
+Must not mention: discount will carry over; discount will not carry over; confirmed
 renewal price.
 
 Expected tools: inbox, CRM, knowledge base.
@@ -132,7 +132,7 @@ account email or exact company before confirming anything.
 Must mention: cannot verify which Evergreen company; multiple Evergreen records;
 ask for account email or company.
 
-Must not mention: confirmed renewal price; discount carries over; either
+Must not mention: confirmed renewal price; discount will carry over; either
 Evergreen company is verified.
 
 Expected tools: inbox, CRM.

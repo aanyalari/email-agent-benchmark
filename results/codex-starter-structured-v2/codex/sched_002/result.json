@@ -1,0 +1,54 @@
+{
+  "action_accuracy": true,
+  "agent": "codex",
+  "agent_kind": "codex",
+  "calendar_ok": true,
+  "critical_tool_calls_ok": true,
+  "crm_ok": true,
+  "evidence_fact_ids": [
+    "jordan.calendar_2026_07_17_13_00_existing_demo",
+    "jordan.calendar_2026_07_17_14_00_available",
+    "jordan.calendar_2026_07_17_15_00_available",
+    "sam.account_owner_jordan",
+    "sched_002.requested_time_2026_07_17_13_00_ct"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 1,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [],
+  "n_failed_action_tool_calls": 0,
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 6,
+  "passed": true,
+  "reasons": [],
+  "required_fact_ids_ok": true,
+  "required_facts_ok": true,
+  "required_facts_text_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-starter-structured-v2/codex/sched_002",
+  "task_id": "sched_002",
+  "tool_categories": [
+    "action",
+    "calendar",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 26.3,
+  "warnings": [
+    "legacy text check: missing required fact: requested time is 2026-07-17T13:00:00-05:00",
+    "legacy text check: missing required fact: requested time conflicts with an existing demo",
+    "legacy text check: missing required fact: nearby available alternatives include 2026-07-17T14:00:00-05:00",
+    "legacy text check: missing required fact: nearby available alternatives include 2026-07-17T15:00:00-05:00",
+    "legacy text check: missing required fact: account owner is jordan@company.example"
+  ]
+}

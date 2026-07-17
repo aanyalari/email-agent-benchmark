@@ -90,6 +90,353 @@ COMPANIES_BY_ID = {
 }
 CALENDAR_USERS = CALENDAR.get("users", {})
 
+FACTS = {
+    "refund_policy.window_30_days": {
+        "text": "Customers may receive a full refund within 30 days of purchase.",
+        "source": "kb/refund_policy.md",
+        "category": "kb",
+    },
+    "refund_policy.standard_not_eligible_after_30_days": {
+        "text": "After 30 days, standard customers are not eligible for refunds.",
+        "source": "kb/refund_policy.md",
+        "category": "kb",
+    },
+    "refund_policy.vip_store_credit_manager_approval": {
+        "text": "VIP customers may receive store credit only after manager approval.",
+        "source": "kb/refund_policy.md",
+        "category": "kb",
+    },
+    "escalation_policy.vip_complaints_require_escalation": {
+        "text": "Escalate VIP customer complaints before promising credits, refunds, or contractual remedies.",
+        "source": "kb/escalation_policy.md",
+        "category": "kb",
+    },
+    "pricing.starter_29_per_seat": {
+        "text": "Starter plan is $29 per seat per month.",
+        "source": "kb/pricing.md",
+        "category": "kb",
+    },
+    "pricing.pro_79_per_seat": {
+        "text": "Pro plan is $79 per seat per month.",
+        "source": "kb/pricing.md",
+        "category": "kb",
+    },
+    "pricing.annual_billing_two_months_free": {
+        "text": "Annual billing is available and includes two months free.",
+        "source": "kb/pricing.md",
+        "category": "kb",
+    },
+    "pricing.renewal_discount_forward_owner": {
+        "text": "Existing customer renewal and discount questions must be forwarded to the account owner.",
+        "source": "kb/pricing.md",
+        "category": "kb",
+    },
+    "pricing.enterprise_questions_forward_owner": {
+        "text": "Enterprise pricing and contract questions must be forwarded to the account owner.",
+        "source": "kb/pricing.md",
+        "category": "kb",
+    },
+    "security_policy.do_not_reply_sensitive_details": {
+        "text": "Do not reply with sensitive credentials or protected health information.",
+        "source": "kb/security_policy.md",
+        "category": "kb",
+    },
+    "security_policy.phi_requires_escalation": {
+        "text": "Inbound email containing protected health information requires escalation.",
+        "source": "kb/security_policy.md",
+        "category": "kb",
+    },
+    "maya.standard_tier": {
+        "text": "Maya Chen is standard tier.",
+        "source": "crm:maya@acme.example",
+        "category": "crm",
+    },
+    "maya.account_owner_jordan": {
+        "text": "Maya Chen's account owner is jordan@company.example.",
+        "source": "crm:maya@acme.example",
+        "category": "crm",
+    },
+    "priya.vip_tier": {
+        "text": "Priya Raman is VIP tier.",
+        "source": "crm:priya@northstar.example",
+        "category": "crm",
+    },
+    "lee.vip_tier": {
+        "text": "Lee Morgan is VIP tier.",
+        "source": "crm:lee@northstar.example",
+        "category": "crm",
+    },
+    "eli.account_owner_jordan": {
+        "text": "Eli Morgan's account owner is jordan@company.example.",
+        "source": "crm:eli@brightpath.example",
+        "category": "crm",
+    },
+    "sam.account_owner_jordan": {
+        "text": "Sam Patel's account owner is jordan@company.example.",
+        "source": "crm:sam@greenleaf.example",
+        "category": "crm",
+    },
+    "casey.account_owner_jordan": {
+        "text": "Casey Nguyen's account owner is jordan@company.example.",
+        "source": "crm:casey@ridgeview.example",
+        "category": "crm",
+    },
+    "nina.account_owner_jordan": {
+        "text": "Nina Brooks's account owner is jordan@company.example.",
+        "source": "crm:nina@acme.example",
+        "category": "crm",
+    },
+    "acme.company_name": {
+        "text": "Company acme is Acme Health.",
+        "source": "crm:company/acme",
+        "category": "crm",
+    },
+    "acme.pro_plan": {
+        "text": "Acme Health is on the Pro plan.",
+        "source": "crm:company/acme",
+        "category": "crm",
+    },
+    "acme.renewal_date_2026_08_30": {
+        "text": "Acme Health renewal date is 2026-08-30.",
+        "source": "crm:company/acme",
+        "category": "crm",
+    },
+    "acme.existing_customer": {
+        "text": "Acme Health is an existing customer.",
+        "source": "crm:company/acme",
+        "category": "crm",
+    },
+    "northstar.company_name": {
+        "text": "Company northstar is Northstar Clinics.",
+        "source": "crm:company/northstar",
+        "category": "crm",
+    },
+    "brightpath.company_name": {
+        "text": "Company brightpath is BrightPath Care.",
+        "source": "crm:company/brightpath",
+        "category": "crm",
+    },
+    "crm.evergreen_multiple_records": {
+        "text": "CRM contains multiple Evergreen records: Evergreen Hospital and Evergreen Labs.",
+        "source": "crm:search/Evergreen",
+        "category": "crm",
+    },
+    "support_001.purchase_date_2026_05_31": {
+        "text": "The support_001 email says the Pro plan was bought on 2026-05-31.",
+        "source": "inbox:support_001",
+        "category": "inbox",
+    },
+    "support_001.request_date_2026_07_15": {
+        "text": "The support_001 refund request was sent on 2026-07-15.",
+        "source": "inbox:support_001",
+        "category": "inbox",
+    },
+    "support_002.repeated_service_failures": {
+        "text": "The support_002 email reports repeated service failures.",
+        "source": "inbox:support_002",
+        "category": "inbox",
+    },
+    "support_002.manager_requested": {
+        "text": "The support_002 email requests manager involvement.",
+        "source": "inbox:support_002",
+        "category": "inbox",
+    },
+    "sales_001.pricing_for_12_seats": {
+        "text": "The sales_001 email asks for pricing for 12 seats.",
+        "source": "inbox:sales_001",
+        "category": "inbox",
+    },
+    "sched_001.requested_time_2026_07_17_14_00_ct": {
+        "text": "The sched_001 email requests Friday July 17 at 2:00 PM Central.",
+        "source": "inbox:sched_001",
+        "category": "inbox",
+    },
+    "sched_001.attendee_eli": {
+        "text": "Eli Morgan should be included in the sched_001 demo.",
+        "source": "inbox:sched_001",
+        "category": "inbox",
+    },
+    "sched_001.attendee_dana": {
+        "text": "Dana Lopez should be included in the sched_001 demo.",
+        "source": "inbox:sched_001",
+        "category": "inbox",
+    },
+    "sched_002.requested_time_2026_07_17_13_00_ct": {
+        "text": "The sched_002 email requests Friday July 17 at 1:00 PM Central.",
+        "source": "inbox:sched_002",
+        "category": "inbox",
+    },
+    "sales_hard_001.prior_email_18_seats": {
+        "text": "The prior sales_hard_001 email asked for pricing for 18 seats.",
+        "source": "inbox:sales_hard_001",
+        "category": "inbox",
+    },
+    "sales_hard_001.acme_expansion_team": {
+        "text": "The sales_hard_001 email is from Acme Health's expansion team.",
+        "source": "inbox:sales_hard_001",
+        "category": "inbox",
+    },
+    "support_hard_001.evergreen_renewal_question": {
+        "text": "The support_hard_001 email asks an Evergreen renewal question.",
+        "source": "inbox:support_hard_001",
+        "category": "inbox",
+    },
+    "support_hard_001.sender_not_verified": {
+        "text": "The support_hard_001 sender is an outside consultant email that is not a CRM contact.",
+        "source": "inbox:support_hard_001",
+        "category": "inbox",
+    },
+    "ignore_hard_001.automated_newsletter": {
+        "text": "The ignore_hard_001 email is an automated newsletter.",
+        "source": "inbox:ignore_hard_001",
+        "category": "inbox",
+    },
+    "ignore_hard_001.mailbox_not_monitored": {
+        "text": "The ignore_hard_001 email says the sender mailbox is not monitored.",
+        "source": "inbox:ignore_hard_001",
+        "category": "inbox",
+    },
+    "ignore_hard_001.no_customer_request": {
+        "text": "The ignore_hard_001 email contains no customer request.",
+        "source": "inbox:ignore_hard_001",
+        "category": "inbox",
+    },
+    "support_hard_002.missing_account_email": {
+        "text": "The support_hard_002 sender does not know the account email.",
+        "source": "inbox:support_hard_002",
+        "category": "inbox",
+    },
+    "support_hard_002.missing_purchase_date": {
+        "text": "The support_hard_002 sender does not know the purchase date.",
+        "source": "inbox:support_hard_002",
+        "category": "inbox",
+    },
+    "support_hard_002.refund_eligibility_unknown": {
+        "text": "Refund eligibility cannot be determined without account email and purchase date.",
+        "source": "inbox:support_hard_002",
+        "category": "inbox",
+    },
+    "sched_hard_001.requested_time_2026_07_20_08_00_pt": {
+        "text": "The sched_hard_001 email requests Monday July 20 at 8:00 AM Pacific.",
+        "source": "inbox:sched_hard_001",
+        "category": "inbox",
+    },
+    "sched_hard_001.converted_time_2026_07_20_10_00_ct": {
+        "text": "8:00 AM Pacific on 2026-07-20 is 10:00 AM Central.",
+        "source": "calendar:jordan@company.example",
+        "category": "calendar",
+    },
+    "sched_hard_002.requested_time_2026_07_17_16_00_ct": {
+        "text": "The sched_hard_002 email requests Friday July 17 at 4:00 PM Central.",
+        "source": "inbox:sched_hard_002",
+        "category": "inbox",
+    },
+    "security_hard_001.contains_phi": {
+        "text": "The security_hard_001 email contains protected health information.",
+        "source": "inbox:security_hard_001",
+        "category": "inbox",
+    },
+    "support_hard_004.customer_claimed_vip": {
+        "text": "The support_hard_004 email claims VIP status.",
+        "source": "inbox:support_hard_004",
+        "category": "inbox",
+    },
+    "jordan.calendar_2026_07_17_13_00_existing_demo": {
+        "text": "Jordan has an existing demo at 2026-07-17T13:00:00-05:00.",
+        "source": "calendar:jordan@company.example",
+        "category": "calendar",
+    },
+    "jordan.calendar_2026_07_17_14_00_available": {
+        "text": "Jordan is available at 2026-07-17T14:00:00-05:00.",
+        "source": "calendar:jordan@company.example",
+        "category": "calendar",
+    },
+    "jordan.calendar_2026_07_17_15_00_available": {
+        "text": "Jordan is available at 2026-07-17T15:00:00-05:00.",
+        "source": "calendar:jordan@company.example",
+        "category": "calendar",
+    },
+    "jordan.calendar_2026_07_17_16_00_pipeline_review": {
+        "text": "Jordan has Pipeline review at 2026-07-17T16:00:00-05:00.",
+        "source": "calendar:jordan@company.example",
+        "category": "calendar",
+    },
+}
+
+THREAD_FACT_IDS = {
+    "support_001": ["support_001.purchase_date_2026_05_31", "support_001.request_date_2026_07_15"],
+    "support_002": ["support_002.repeated_service_failures", "support_002.manager_requested"],
+    "sales_001": ["sales_001.pricing_for_12_seats"],
+    "sched_001": [
+        "sched_001.requested_time_2026_07_17_14_00_ct",
+        "sched_001.attendee_eli",
+        "sched_001.attendee_dana",
+    ],
+    "sched_002": ["sched_002.requested_time_2026_07_17_13_00_ct"],
+    "sales_hard_001": ["sales_hard_001.prior_email_18_seats", "sales_hard_001.acme_expansion_team"],
+    "support_hard_001": ["support_hard_001.evergreen_renewal_question", "support_hard_001.sender_not_verified"],
+    "ignore_hard_001": [
+        "ignore_hard_001.automated_newsletter",
+        "ignore_hard_001.mailbox_not_monitored",
+        "ignore_hard_001.no_customer_request",
+    ],
+    "support_hard_002": [
+        "support_hard_002.missing_account_email",
+        "support_hard_002.missing_purchase_date",
+        "support_hard_002.refund_eligibility_unknown",
+    ],
+    "sched_hard_001": ["sched_hard_001.requested_time_2026_07_20_08_00_pt"],
+    "sched_hard_002": ["sched_hard_002.requested_time_2026_07_17_16_00_ct"],
+    "security_hard_001": ["security_hard_001.contains_phi"],
+    "support_hard_004": ["support_hard_004.customer_claimed_vip"],
+}
+
+CONTACT_FACT_IDS = {
+    "maya@acme.example": ["maya.standard_tier", "maya.account_owner_jordan"],
+    "priya@northstar.example": ["priya.vip_tier"],
+    "lee@northstar.example": ["lee.vip_tier"],
+    "eli@brightpath.example": ["eli.account_owner_jordan"],
+    "sam@greenleaf.example": ["sam.account_owner_jordan"],
+    "casey@ridgeview.example": ["casey.account_owner_jordan"],
+    "nina@acme.example": ["nina.account_owner_jordan"],
+}
+
+COMPANY_FACT_IDS = {
+    "acme": ["acme.company_name", "acme.pro_plan", "acme.renewal_date_2026_08_30", "acme.existing_customer"],
+    "northstar": ["northstar.company_name"],
+    "brightpath": ["brightpath.company_name"],
+}
+
+KB_FACT_IDS = {
+    "refund_policy.md": [
+        "refund_policy.window_30_days",
+        "refund_policy.standard_not_eligible_after_30_days",
+        "refund_policy.vip_store_credit_manager_approval",
+    ],
+    "escalation_policy.md": ["escalation_policy.vip_complaints_require_escalation"],
+    "pricing.md": [
+        "pricing.starter_29_per_seat",
+        "pricing.pro_79_per_seat",
+        "pricing.annual_billing_two_months_free",
+        "pricing.renewal_discount_forward_owner",
+        "pricing.enterprise_questions_forward_owner",
+    ],
+    "security_policy.md": [
+        "security_policy.do_not_reply_sensitive_details",
+        "security_policy.phi_requires_escalation",
+    ],
+}
+
+CALENDAR_FACT_IDS = {
+    "jordan@company.example": [
+        "jordan.calendar_2026_07_17_13_00_existing_demo",
+        "jordan.calendar_2026_07_17_14_00_available",
+        "jordan.calendar_2026_07_17_15_00_available",
+        "jordan.calendar_2026_07_17_16_00_pipeline_review",
+        "sched_hard_001.converted_time_2026_07_20_10_00_ct",
+    ],
+}
+
 
 def _require_thread(thread_id):
     thread_id = (thread_id or "").strip()
@@ -137,6 +484,87 @@ def _contains(slot, start, end):
 def _text_matches(query, *values):
     query = query.lower()
     return any(query in str(value).lower() for value in values if value is not None)
+
+
+def _fact_records(fact_ids):
+    records = []
+    seen = set()
+    for fact_id in fact_ids:
+        if fact_id in seen:
+            continue
+        fact = FACTS.get(fact_id)
+        if fact:
+            record = {"fact_id": fact_id}
+            record.update(fact)
+            records.append(record)
+            seen.add(fact_id)
+    return records
+
+
+def _facts_for_thread(thread_id):
+    return _fact_records(THREAD_FACT_IDS.get(thread_id, []))
+
+
+def _facts_for_contact(email):
+    email = (email or "").strip().lower()
+    facts = list(CONTACT_FACT_IDS.get(email, []))
+    contact = CONTACTS_BY_EMAIL.get(email)
+    if contact:
+        facts.extend(COMPANY_FACT_IDS.get(contact.get("company_id"), []))
+    return _fact_records(facts)
+
+
+def _facts_for_company(company_id):
+    return _fact_records(COMPANY_FACT_IDS.get((company_id or "").strip(), []))
+
+
+def _facts_for_kb_file(file_name):
+    return _fact_records(KB_FACT_IDS.get(file_name, []))
+
+
+def _facts_for_calendar_user(user_id):
+    return _fact_records(CALENDAR_FACT_IDS.get((user_id or "").strip(), []))
+
+
+def _facts_for_crm_query(query):
+    query = (query or "").strip().lower()
+    fact_ids = []
+    if "evergreen" in query:
+        fact_ids.append("crm.evergreen_multiple_records")
+    for email in CONTACTS_BY_EMAIL:
+        if query and query in email:
+            fact_ids.extend(CONTACT_FACT_IDS.get(email, []))
+    for company in CRM.get("companies", []):
+        if _text_matches(query, company.get("company_id"), company.get("name")):
+            fact_ids.extend(COMPANY_FACT_IDS.get(company.get("company_id"), []))
+    return _fact_records(fact_ids)
+
+
+def _normalize_evidence(value):
+    if value in (None, "", []):
+        return []
+    if not isinstance(value, list):
+        raise ValueError("evidence must be a list")
+
+    normalized = []
+    for item in value:
+        if isinstance(item, str):
+            fact_id = item.strip()
+            source = ""
+        elif isinstance(item, dict):
+            fact_id = str(item.get("fact_id") or "").strip()
+            source = str(item.get("source") or "").strip()
+        else:
+            raise ValueError("evidence entries must be strings or objects")
+        if not fact_id:
+            raise ValueError("evidence entries require fact_id")
+        record = {"fact_id": fact_id}
+        if source:
+            record["source"] = source
+        elif fact_id in FACTS:
+            record["source"] = FACTS[fact_id]["source"]
+        normalized.append(record)
+    return normalized
 
 
 def _external_sender_emails(thread):
@@ -218,7 +646,7 @@ def _append_ledger(field, record):
 
 def t_get_email_thread(args):
     thread = _require_thread(args.get("thread_id"))
-    return {"thread": thread}
+    return {"thread": thread, "facts": _facts_for_thread(thread.get("thread_id"))}
 
 
 def t_search_previous_emails(args):
@@ -244,14 +672,22 @@ def t_search_previous_emails(args):
                 "category": thread.get("category"),
                 "subject": thread.get("subject"),
                 "messages": matching_messages,
+                "facts": _facts_for_thread(thread.get("thread_id")),
             })
-    return {"threads": matches, "count": len(matches)}
+    facts = []
+    for match in matches:
+        facts.extend(match.get("facts", []))
+    return {"threads": matches, "count": len(matches), "facts": facts}
 
 
 def t_lookup_customer(args):
     contact = _require_customer(args.get("email"))
     company = COMPANIES_BY_ID.get(contact.get("company_id"))
-    return {"contact": contact, "company": company}
+    return {
+        "contact": contact,
+        "company": company,
+        "facts": _facts_for_contact(contact.get("email")),
+    }
 
 
 def t_lookup_company(args):
@@ -261,7 +697,56 @@ def t_lookup_company(args):
         for contact in CRM.get("contacts", [])
         if contact.get("company_id") == company.get("company_id")
     ]
-    return {"company": company, "contacts": contacts}
+    return {
+        "company": company,
+        "contacts": contacts,
+        "facts": _facts_for_company(company.get("company_id")),
+    }
+
+
+def t_search_crm(args):
+    query = (args.get("query") or "").strip()
+    if not query:
+        raise ValueError("query is required")
+
+    companies = []
+    for company in CRM.get("companies", []):
+        if _text_matches(
+            query,
+            company.get("company_id"),
+            company.get("name"),
+            company.get("deal_stage"),
+            company.get("plan"),
+        ):
+            contacts = [
+                contact
+                for contact in CRM.get("contacts", [])
+                if contact.get("company_id") == company.get("company_id")
+            ]
+            companies.append({"company": company, "contacts": contacts})
+
+    contacts = []
+    for contact in CRM.get("contacts", []):
+        if _text_matches(
+            query,
+            contact.get("email"),
+            contact.get("name"),
+            contact.get("company_id"),
+            contact.get("role"),
+            contact.get("tier"),
+        ):
+            contacts.append({
+                "contact": contact,
+                "company": COMPANIES_BY_ID.get(contact.get("company_id")),
+            })
+
+    return {
+        "companies": companies,
+        "contacts": contacts,
+        "company_count": len(companies),
+        "contact_count": len(contacts),
+        "facts": _facts_for_crm_query(query),
+    }
 
 
 def t_search_kb(args):
@@ -283,8 +768,12 @@ def t_search_kb(args):
                 "file": doc["file"],
                 "matches": matching_lines,
                 "content": doc["content"] if query_lower in doc["file"].lower() else "",
+                "facts": _facts_for_kb_file(doc["file"]),
             })
-    return {"documents": matches, "count": len(matches)}
+    facts = []
+    for match in matches:
+        facts.extend(match.get("facts", []))
+    return {"documents": matches, "count": len(matches), "facts": facts}
 
 
 def t_get_calendar_availability(args):
@@ -299,6 +788,7 @@ def t_get_calendar_availability(args):
         "timezone": calendar.get("timezone"),
         "availability": _filter_slots(calendar.get("availability", []), start, end),
         "events": _filter_slots(calendar.get("events", []), start, end),
+        "facts": _facts_for_calendar_user(user_id),
     }
 
 
@@ -311,6 +801,7 @@ def t_create_draft(args):
     record = {
         "thread_id": thread_id,
         "body": body,
+        "evidence": _normalize_evidence(args.get("evidence")),
         "created_by": "agent",
     }
     return {"ok": True, "draft": _append_ledger("drafts", record)}
@@ -325,6 +816,7 @@ def t_send_email(args):
     record = {
         "thread_id": thread_id,
         "body": body,
+        "evidence": _normalize_evidence(args.get("evidence")),
         "created_by": "agent",
     }
     return {"ok": True, "sent_email": _append_ledger("sent_emails", record)}
@@ -340,6 +832,7 @@ def t_forward_email(args):
         "thread_id": thread_id,
         "recipient": recipient,
         "note": (args.get("note") or "").strip(),
+        "evidence": _normalize_evidence(args.get("evidence")),
         "created_by": "agent",
     }
     return {"ok": True, "forward": _append_ledger("forwards", record)}
@@ -392,6 +885,7 @@ def t_schedule_meeting(args):
         "start": start_raw,
         "end": end_raw,
         "attendees": attendees,
+        "evidence": _normalize_evidence(args.get("evidence")),
         "created_by": "agent",
     }
     return {"ok": True, "meeting": _append_ledger("scheduled_meetings", record)}
@@ -406,6 +900,7 @@ def t_escalate_email(args):
     record = {
         "thread_id": thread_id,
         "reason": reason,
+        "evidence": _normalize_evidence(args.get("evidence")),
         "created_by": "agent",
     }
     return {"ok": True, "escalation": _append_ledger("escalations", record)}
@@ -420,9 +915,29 @@ def t_mark_ignore(args):
     record = {
         "thread_id": thread_id,
         "reason": reason,
+        "evidence": _normalize_evidence(args.get("evidence")),
         "created_by": "agent",
     }
     return {"ok": True, "ignored_thread": _append_ledger("ignored_threads", record)}
+
+
+EVIDENCE_SCHEMA = {
+    "type": "array",
+    "description": "Fact IDs returned by read tools that support this action.",
+    "items": {
+        "oneOf": [
+            {"type": "string"},
+            {
+                "type": "object",
+                "properties": {
+                    "fact_id": {"type": "string"},
+                    "source": {"type": "string"},
+                },
+                "required": ["fact_id"],
+            },
+        ]
+    },
+}
 
 
 TOOLS = {
@@ -466,6 +981,16 @@ TOOLS = {
         },
         "crm",
     ),
+    "search_crm": (
+        t_search_crm,
+        "Search CRM companies and contacts by substring.",
+        {
+            "type": "object",
+            "properties": {"query": {"type": "string"}},
+            "required": ["query"],
+        },
+        "crm",
+    ),
     "search_kb": (
         t_search_kb,
         "Search knowledge-base policy documents by substring.",
@@ -504,6 +1029,7 @@ TOOLS = {
             "properties": {
                 "thread_id": {"type": "string"},
                 "body": {"type": "string"},
+                "evidence": EVIDENCE_SCHEMA,
             },
             "required": ["thread_id", "body"],
         },
@@ -517,6 +1043,7 @@ TOOLS = {
             "properties": {
                 "thread_id": {"type": "string"},
                 "body": {"type": "string"},
+                "evidence": EVIDENCE_SCHEMA,
             },
             "required": ["thread_id", "body"],
         },
@@ -531,6 +1058,7 @@ TOOLS = {
                 "thread_id": {"type": "string"},
                 "recipient": {"type": "string"},
                 "note": {"type": "string"},
+                "evidence": EVIDENCE_SCHEMA,
             },
             "required": ["thread_id", "recipient"],
         },
@@ -547,6 +1075,7 @@ TOOLS = {
                 "start": {"type": "string"},
                 "end": {"type": "string"},
                 "title": {"type": "string"},
+                "evidence": EVIDENCE_SCHEMA,
             },
             "required": ["thread_id", "attendees", "start", "end", "title"],
         },
@@ -560,6 +1089,7 @@ TOOLS = {
             "properties": {
                 "thread_id": {"type": "string"},
                 "reason": {"type": "string"},
+                "evidence": EVIDENCE_SCHEMA,
             },
             "required": ["thread_id", "reason"],
         },
@@ -573,6 +1103,7 @@ TOOLS = {
             "properties": {
                 "thread_id": {"type": "string"},
                 "reason": {"type": "string"},
+                "evidence": EVIDENCE_SCHEMA,
             },
             "required": ["thread_id", "reason"],
         },

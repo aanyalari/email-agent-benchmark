@@ -1,0 +1,49 @@
+{
+  "crm_updates": [],
+  "drafts": [],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [
+    {
+      "attendees": [
+        "eli@brightpath.example",
+        "dana@brightpath.example",
+        "jordan@company.example"
+      ],
+      "calendar_user": "jordan@company.example",
+      "created_by": "agent",
+      "end": "2026-07-17T14:30:00-05:00",
+      "evidence": [
+        {
+          "fact_id": "sched_001.requested_time_2026_07_17_14_00_ct",
+          "source": "inbox:sched_001"
+        },
+        {
+          "fact_id": "sched_001.attendee_eli",
+          "source": "inbox:sched_001"
+        },
+        {
+          "fact_id": "sched_001.attendee_dana",
+          "source": "inbox:sched_001"
+        },
+        {
+          "fact_id": "eli.account_owner_jordan",
+          "source": "crm:eli@brightpath.example"
+        },
+        {
+          "fact_id": "brightpath.company_name",
+          "source": "crm:company/brightpath"
+        },
+        {
+          "fact_id": "jordan.calendar_2026_07_17_14_00_available",
+          "source": "calendar:jordan@company.example"
+        }
+      ],
+      "start": "2026-07-17T14:00:00-05:00",
+      "thread_id": "sched_001",
+      "title": "BrightPath Care Demo"
+    }
+  ],
+  "sent_emails": []
+}

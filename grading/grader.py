@@ -86,6 +86,14 @@ def _failed_tool_calls(tool_calls):
     ]
 
 
+def _critical_failed_tool_calls(tool_calls):
+    return [
+        call
+        for call in _failed_tool_calls(tool_calls)
+        if call.get("category") == "action"
+    ]
+
+
 def _tool_categories(tool_calls):
     return sorted(
         {
@@ -178,6 +186,35 @@ def _expected_action_text(task, ledger):
     if expected_action == "ignore":
         return "\n".join(_record_text(record, ("reason",)) for record in records)
     return ""
+
+
+def _evidence_fact_ids(task, ledger):
+    fact_ids = set()
+    for record in _expected_action_records(task, ledger):
+        evidence = record.get("evidence") or []
+        if not isinstance(evidence, list):
+            continue
+        for item in evidence:
+            if isinstance(item, str):
+                fact_id = item.strip()
+            elif isinstance(item, dict):
+                fact_id = str(item.get("fact_id") or "").strip()
+            else:
+                continue
+            if fact_id:
+                fact_ids.add(fact_id)
+    return sorted(fact_ids)
+
+
+def _check_required_fact_ids(task, ledger):
+    required_fact_ids = task.get("required_fact_ids", [])
+    if not required_fact_ids:
+        return True, []
+
+    actual = set(_evidence_fact_ids(task, ledger))
+    missing = [fact_id for fact_id in required_fact_ids if fact_id not in actual]
+    reasons = [f"missing required fact id: {fact_id}" for fact_id in missing]
+    return not reasons, reasons
 
 
 def _check_required_facts(task, ledger):
@@ -317,10 +354,13 @@ def grade(task, run_dir, calendar_path=CALENDAR_PATH):
     warnings = []
     action_accuracy = False
     required_facts_ok = True
+    required_fact_ids_ok = True
+    required_facts_text_ok = True
     forbidden_claims_ok = True
     calendar_ok = True
     crm_ok = True
     tool_categories_ok = True
+    critical_tool_calls_ok = True
 
     if not ledger_path.exists():
         reasons.append("missing ledger.json")
@@ -333,25 +373,41 @@ def grade(task, run_dir, calendar_path=CALENDAR_PATH):
             reasons.append(f"invalid ledger.json: {exc}")
 
     ledger_counts = _ledger_counts(ledger) if ledger is not None else {}
+    evidence_fact_ids = []
     if ledger is not None:
         ledger_reasons = _check_expected_ledger(task, ledger)
         detail_reasons = _check_action_details(task, ledger)
-        required_facts_ok, fact_reasons = _check_required_facts(task, ledger)
+        required_fact_ids_ok, fact_id_reasons = _check_required_fact_ids(task, ledger)
+        required_facts_text_ok, fact_reasons = _check_required_facts(task, ledger)
         forbidden_claims_ok, forbidden_reasons = _check_forbidden_claims(task, ledger)
         calendar_ok, calendar_reasons = _check_calendar(task, ledger, calendar_path)
+        evidence_fact_ids = _evidence_fact_ids(task, ledger)
+
+        if task.get("required_fact_ids"):
+            required_facts_ok = required_fact_ids_ok
+            if fact_reasons:
+                warnings.extend(f"legacy text check: {reason}" for reason in fact_reasons)
+        else:
+            required_facts_ok = required_facts_text_ok
 
         action_accuracy = not ledger_reasons and not detail_reasons
         reasons.extend(ledger_reasons)
         reasons.extend(detail_reasons)
-        reasons.extend(fact_reasons)
+        reasons.extend(fact_id_reasons)
+        if not task.get("required_fact_ids"):
+            reasons.extend(fact_reasons)
         reasons.extend(forbidden_reasons)
         reasons.extend(calendar_reasons)
 
     tool_calls, tool_warnings = _load_tool_calls(run_dir)
     failed_tool_calls = _failed_tool_calls(tool_calls)
+    critical_failed_tool_calls = _critical_failed_tool_calls(tool_calls)
     warnings.extend(tool_warnings)
     if failed_tool_calls:
         warnings.append(f"{len(failed_tool_calls)} failed tool call(s) recorded")
+    if critical_failed_tool_calls:
+        critical_tool_calls_ok = False
+        reasons.append(f"{len(critical_failed_tool_calls)} failed action tool call(s)")
 
     tool_categories_ok, category_reasons = _check_expected_tool_categories(task, tool_calls)
     reasons.extend(category_reasons)
@@ -367,13 +423,23 @@ def grade(task, run_dir, calendar_path=CALENDAR_PATH):
         "warnings": warnings,
         "action_accuracy": action_accuracy,
         "required_facts_ok": required_facts_ok,
+        "required_fact_ids_ok": required_fact_ids_ok,
+        "required_facts_text_ok": required_facts_text_ok,
         "forbidden_claims_ok": forbidden_claims_ok,
         "calendar_ok": calendar_ok,
         "crm_ok": crm_ok,
         "tool_categories_ok": tool_categories_ok,
+        "critical_tool_calls_ok": critical_tool_calls_ok,
         "ledger_counts": ledger_counts,
+        "evidence_fact_ids": evidence_fact_ids,
+        "missing_required_fact_ids": [
+            fact_id
+            for fact_id in task.get("required_fact_ids", [])
+            if fact_id not in set(evidence_fact_ids)
+        ],
         "n_tool_calls": len(tool_calls),
         "n_failed_tool_calls": len(failed_tool_calls),
+        "n_failed_action_tool_calls": len(critical_failed_tool_calls),
         "tool_categories": _tool_categories(tool_calls),
         "run_dir": str(run_dir),
     }

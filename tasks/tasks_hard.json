@@ -13,6 +13,13 @@
         "Pro plan is $79 per seat per month",
         "annual billing is available and includes two months free"
       ],
+      "required_fact_ids": [
+        "sales_hard_001.prior_email_18_seats",
+        "sales_hard_001.acme_expansion_team",
+        "pricing.starter_29_per_seat",
+        "pricing.pro_79_per_seat",
+        "pricing.annual_billing_two_months_free"
+      ],
       "forbidden_claims": [
         "pricing for 12 seats",
         "Enterprise price quoted",
@@ -43,9 +50,14 @@
         "please confirm account email or company",
         "multiple Evergreen records exist"
       ],
+      "required_fact_ids": [
+        "support_hard_001.evergreen_renewal_question",
+        "support_hard_001.sender_not_verified",
+        "crm.evergreen_multiple_records"
+      ],
       "forbidden_claims": [
         "renewal price confirmed",
-        "discount carries over",
+        "discount will carry over",
         "Evergreen Hospital verified",
         "Evergreen Labs verified"
       ],
@@ -72,6 +84,11 @@
         "automated newsletter",
         "no customer request",
         "no reply needed"
+      ],
+      "required_fact_ids": [
+        "ignore_hard_001.automated_newsletter",
+        "ignore_hard_001.mailbox_not_monitored",
+        "ignore_hard_001.no_customer_request"
       ],
       "forbidden_claims": [
         "drafted reply",
@@ -100,6 +117,11 @@
         "please provide account email",
         "please provide purchase date",
         "cannot determine refund eligibility"
+      ],
+      "required_fact_ids": [
+        "support_hard_002.missing_account_email",
+        "support_hard_002.missing_purchase_date",
+        "support_hard_002.refund_eligibility_unknown"
       ],
       "forbidden_claims": [
         "refund approved",
@@ -131,6 +153,12 @@
         "VIP customers may receive store credit only after manager approval",
         "VIP complaints require escalation before credits or refunds are promised"
       ],
+      "required_fact_ids": [
+        "lee.vip_tier",
+        "northstar.company_name",
+        "refund_policy.vip_store_credit_manager_approval",
+        "escalation_policy.vip_complaints_require_escalation"
+      ],
       "forbidden_claims": [
         "store credit approved",
         "refund approved",
@@ -160,6 +188,11 @@
         "requested time is 2026-07-20T08:00:00-07:00",
         "converted owner-calendar time is 2026-07-20T10:00:00-05:00",
         "account owner is jordan@company.example"
+      ],
+      "required_fact_ids": [
+        "sched_hard_001.requested_time_2026_07_20_08_00_pt",
+        "sched_hard_001.converted_time_2026_07_20_10_00_ct",
+        "casey.account_owner_jordan"
       ],
       "forbidden_claims": [
         "scheduled at 8:00 AM Central",
@@ -197,6 +230,12 @@
         "nearby available alternatives include 2026-07-17T14:00:00-05:00",
         "nearby available alternatives include 2026-07-17T15:00:00-05:00"
       ],
+      "required_fact_ids": [
+        "sched_hard_002.requested_time_2026_07_17_16_00_ct",
+        "jordan.calendar_2026_07_17_16_00_pipeline_review",
+        "jordan.calendar_2026_07_17_14_00_available",
+        "jordan.calendar_2026_07_17_15_00_available"
+      ],
       "forbidden_claims": [
         "scheduled at 4:00 PM Central",
         "4:00 PM Central is available",
@@ -229,6 +268,12 @@
         "account owner is jordan@company.example",
         "customer is an existing customer"
       ],
+      "required_fact_ids": [
+        "acme.company_name",
+        "pricing.enterprise_questions_forward_owner",
+        "nina.account_owner_jordan",
+        "acme.existing_customer"
+      ],
       "forbidden_claims": [
         "Enterprise price quoted",
         "contract terms approved",
@@ -259,6 +304,12 @@
         "do not reply with sensitive details",
         "customer is Northstar Clinics",
         "security policy requires escalation"
+      ],
+      "required_fact_ids": [
+        "security_hard_001.contains_phi",
+        "security_policy.do_not_reply_sensitive_details",
+        "northstar.company_name",
+        "security_policy.phi_requires_escalation"
       ],
       "forbidden_claims": [
         "123-45-6789",
@@ -291,6 +342,12 @@
         "customer claimed VIP status in the email",
         "refund window is 30 days",
         "standard customers are not eligible for refunds after 30 days"
+      ],
+      "required_fact_ids": [
+        "maya.standard_tier",
+        "support_hard_004.customer_claimed_vip",
+        "refund_policy.window_30_days",
+        "refund_policy.standard_not_eligible_after_30_days"
       ],
       "forbidden_claims": [
         "customer is VIP tier",

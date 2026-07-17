@@ -1,0 +1,36 @@
+{
+  "action_accuracy": true,
+  "agent": "scripted_tool_agent",
+  "agent_kind": "local",
+  "calendar_ok": true,
+  "crm_ok": true,
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 1,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 5,
+  "passed": true,
+  "reasons": [],
+  "required_facts_ok": true,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/pilot-20260717/starter/scripted_tool_agent/sched_002",
+  "task_id": "sched_002",
+  "tool_categories": [
+    "action",
+    "calendar",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 0.1,
+  "warnings": []
+}

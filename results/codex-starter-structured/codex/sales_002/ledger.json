@@ -1,0 +1,42 @@
+{
+  "crm_updates": [],
+  "drafts": [],
+  "escalations": [],
+  "forwards": [
+    {
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "maya.account_owner_jordan",
+          "source": "crm:maya@acme.example"
+        },
+        {
+          "fact_id": "acme.company_name",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "acme.pro_plan",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "acme.renewal_date_2026_08_30",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "acme.existing_customer",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "pricing.renewal_discount_forward_owner",
+          "source": "kb/pricing.md"
+        }
+      ],
+      "note": "Maya Chen at Acme Health asked whether their current Pro plan discount carries over at renewal or whether they should expect different renewal pricing. Acme Health is an existing Pro customer with renewal on 2026-08-30; pricing policy says existing customer renewal and discount questions must be forwarded to the account owner.",
+      "recipient": "jordan@company.example",
+      "thread_id": "sales_002"
+    }
+  ],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

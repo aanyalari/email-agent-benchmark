@@ -33,6 +33,10 @@ Use this shape:
   "prompt": "Handle email thread support_003. Decide the correct action and create the appropriate draft or workflow action.",
   "thread_id": "support_003",
   "expected_action": "draft",
+  "required_fact_ids": [
+    "maya.standard_tier",
+    "refund_policy.window_30_days"
+  ],
   "required_facts": [
     "customer is standard tier",
     "refund window is 30 days"
@@ -114,11 +118,24 @@ Avoid traps that rely on broad world knowledge, taste, or unstated assumptions.
 
 ## Required Facts
 
-`required_facts` are checked against the relevant ledger text for text-based
-actions. For drafts and sends, that means the message body. For forwards, it
-means recipient and note. For escalations or ignores, it means the reason.
+Use `required_fact_ids` for the main objective grounding check. These are stable
+IDs returned by MCP read tools in their `facts` arrays. The agent should pass the
+relevant IDs back in the action tool's `evidence` argument.
 
-Write facts as explicit strings the correct action can reasonably include:
+Use `required_facts` as human-readable prose notes and a non-blocking legacy
+text check. For drafts and sends, text is checked against the message body. For
+forwards, it means recipient and note. For escalations or ignores, it means the
+reason.
+
+Write fact IDs as stable source facts rather than hidden answer labels:
+
+- good: `maya.standard_tier`
+- good: `acme.renewal_date_2026_08_30`
+- good: `pricing.annual_billing_two_months_free`
+- weak: `support_003.correct_answer_is_escalate`
+- weak: `customer_is_important`
+
+Write prose facts as explicit strings the correct action can reasonably include:
 
 - good: `customer is VIP tier`
 - good: `renewal date is 2026-08-30`
@@ -127,9 +144,13 @@ Write facts as explicit strings the correct action can reasonably include:
 - weak: `talk about renewal`
 
 Use canonical dates, email addresses, prices, plan names, and policy phrases
-from the data files. The current grader uses exact substring checks after
-lowercasing, so do not rely on paraphrases unless the agent is scripted to emit
-that exact wording.
+from the data files. The main grader checks `required_fact_ids`; exact prose
+matches are reported as warnings when structured fact IDs are present.
+
+When adding a new fact ID, make it visible through the relevant MCP read tool in
+`server/email_mcp.py`. For example, a CRM tier fact should appear from
+`lookup_customer`, a policy fact should appear from `search_kb`, and a calendar
+fact should appear from `get_calendar_availability`.
 
 For `schedule_meeting`, required facts are useful for human review, but the
 current grader does not check those strings against a message body. It mainly
@@ -174,7 +195,9 @@ Before adding a task, check these points:
 
 - There is only one correct primary action.
 - The expected ledger counts match that one action.
-- Required facts can be copied or naturally stated from the available data.
+- Required fact IDs are visible through read tools and are source facts rather
+  than answer labels.
+- Prose required facts can be copied or naturally stated from the available data.
 - Forbidden claims are claims the correct response should definitely avoid.
 - Calendar tasks include exact ISO timestamps and required attendees in the
   available data and human notes.

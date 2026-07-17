@@ -1,0 +1,38 @@
+{
+  "action_accuracy": false,
+  "agent": "baseline_no_tools",
+  "agent_kind": "local",
+  "calendar_ok": false,
+  "crm_ok": false,
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 0,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 0,
+  "passed": false,
+  "reasons": [
+    "expected scheduled_meetings count 1, got 0",
+    "expected primary action 'schedule_meeting' in ledger field 'scheduled_meetings'",
+    "expected scheduled meeting record for task",
+    "expected tool category 'inbox' was not used",
+    "expected tool category 'crm' was not used",
+    "expected tool category 'calendar' was not used",
+    "expected tool category 'kb' was not used"
+  ],
+  "required_facts_ok": true,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/pilot-20260717/starter/baseline_no_tools/sched_001",
+  "task_id": "sched_001",
+  "tool_categories": [],
+  "tool_categories_ok": false,
+  "wall_s": 0.0,
+  "warnings": []
+}

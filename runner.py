@@ -26,7 +26,13 @@ PROMPT_TEMPLATE = """You are an email reply agent.
 
 All email, CRM, calendar, and policy data lives in the provided tools.
 Do not invent facts.
-Use the tools to inspect the thread and relevant context.
+Use only the email MCP tools to inspect the thread and relevant context.
+Do not inspect local repository files or hidden task files.
+Use lookup_customer or lookup_company for customer/account context.
+Use search_kb for refund, pricing, escalation, scheduling, or security policy.
+Use get_calendar_availability before scheduling or proposing meeting times.
+Read tools may return facts with stable fact_id values.
+When creating a draft, send, forward, escalation, meeting, or ignore action, include the relevant fact_id values in the action tool's evidence argument.
 If the request cannot be completed safely, escalate or ask a follow-up question.
 Do not send an email unless the task clearly requires sending.
 Finish only after creating the correct draft/action in the system.
@@ -114,8 +120,8 @@ def build_prompt(task):
     return PROMPT_TEMPLATE.format(task_prompt=task["prompt"])
 
 
-def expand_cmd(cmd_template, task, prompt, paths):
-    replacements = {
+def build_replacements(task, prompt, paths, run_dir):
+    return {
         "{prompt}": prompt,
         "{mcp_config}": str(paths["mcp_config"]),
         "{server}": str(SERVER),
@@ -126,20 +132,39 @@ def expand_cmd(cmd_template, task, prompt, paths):
         "{calendar}": str(CALENDAR),
         "{kb_dir}": str(KB_DIR),
         "{task_id}": task["id"],
+        "{run_dir}": str(run_dir),
+        "{root}": str(ROOT),
     }
 
+
+def expand_value(value, replacements):
+    expanded = str(value)
+    for placeholder, replacement in replacements.items():
+        expanded = expanded.replace(placeholder, replacement)
+    return expanded
+
+
+def expand_cmd(cmd_template, replacements):
     cmd = []
     for arg in cmd_template:
-        for placeholder, value in replacements.items():
-            arg = arg.replace(placeholder, value)
-        cmd.append(arg)
+        cmd.append(expand_value(arg, replacements))
     return cmd
+
+
+def resolve_cwd(agent_cfg, replacements):
+    cwd_template = agent_cfg.get("cwd", "{root}")
+    cwd = Path(expand_value(cwd_template, replacements))
+    if not cwd.is_absolute():
+        cwd = ROOT / cwd
+    return cwd
 
 
 def run_one(agent_name, agent_cfg, task, run_dir, timeout):
     paths = prepare_run_dir(run_dir, agent_cfg)
     prompt = build_prompt(task)
-    cmd = expand_cmd(agent_cfg["cmd"], task, prompt, paths)
+    replacements = build_replacements(task, prompt, paths, run_dir)
+    cmd = expand_cmd(agent_cfg["cmd"], replacements)
+    cwd = resolve_cwd(agent_cfg, replacements)
 
     start = time.time()
     exit_code = 0
@@ -151,7 +176,7 @@ def run_one(agent_name, agent_cfg, task, run_dir, timeout):
         ) as stderr:
             proc = subprocess.run(
                 cmd,
-                cwd=ROOT,
+                cwd=cwd,
                 stdin=subprocess.DEVNULL,
                 stdout=stdout,
                 stderr=stderr,

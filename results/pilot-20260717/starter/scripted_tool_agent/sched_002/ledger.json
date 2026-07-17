@@ -1,0 +1,15 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Sam,\n\nThe requested time is 2026-07-17T13:00:00-05:00. The requested time conflicts with an existing demo. Nearby available alternatives include 2026-07-17T14:00:00-05:00, and nearby available alternatives include 2026-07-17T15:00:00-05:00. The account owner is jordan@company.example.",
+      "created_by": "agent",
+      "thread_id": "sched_002"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

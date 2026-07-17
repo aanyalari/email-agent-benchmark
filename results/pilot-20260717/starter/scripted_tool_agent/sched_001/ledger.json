@@ -1,0 +1,23 @@
+{
+  "crm_updates": [],
+  "drafts": [],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [
+    {
+      "attendees": [
+        "eli@brightpath.example",
+        "dana@brightpath.example",
+        "jordan@company.example"
+      ],
+      "calendar_user": "jordan@company.example",
+      "created_by": "agent",
+      "end": "2026-07-17T14:30:00-05:00",
+      "start": "2026-07-17T14:00:00-05:00",
+      "thread_id": "sched_001",
+      "title": "Demo with BrightPath Care"
+    }
+  ],
+  "sent_emails": []
+}

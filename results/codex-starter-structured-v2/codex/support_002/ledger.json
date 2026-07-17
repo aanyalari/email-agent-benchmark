@@ -1,0 +1,41 @@
+{
+  "crm_updates": [],
+  "drafts": [],
+  "escalations": [
+    {
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "support_002.repeated_service_failures",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "support_002.manager_requested",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "priya.vip_tier",
+          "source": "crm:priya@northstar.example"
+        },
+        {
+          "fact_id": "northstar.company_name",
+          "source": "crm:company/northstar"
+        },
+        {
+          "fact_id": "escalation_policy.vip_complaints_require_escalation",
+          "source": "kb/escalation_policy.md"
+        },
+        {
+          "fact_id": "refund_policy.vip_store_credit_manager_approval",
+          "source": "kb/refund_policy.md"
+        }
+      ],
+      "reason": "VIP customer Northstar Clinics reports repeated export service failures blocking an executive report, requests manager involvement today, and asks what credit or refund will be offered before renewal. Policy requires escalation before promising credits, refunds, or contractual remedies; VIP store credit requires manager approval.",
+      "thread_id": "support_002"
+    }
+  ],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

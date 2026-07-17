@@ -26,6 +26,107 @@ EMPTY_LEDGER = {
     "crm_updates": [],
 }
 
+EVIDENCE = {
+    "support_001": [
+        "refund_policy.window_30_days",
+        "support_001.purchase_date_2026_05_31",
+        "support_001.request_date_2026_07_15",
+        "maya.standard_tier",
+    ],
+    "support_002": [
+        "priya.vip_tier",
+        "northstar.company_name",
+        "support_002.repeated_service_failures",
+        "support_002.manager_requested",
+        "escalation_policy.vip_complaints_require_escalation",
+    ],
+    "sales_001": [
+        "brightpath.company_name",
+        "sales_001.pricing_for_12_seats",
+        "pricing.starter_29_per_seat",
+        "pricing.pro_79_per_seat",
+        "pricing.annual_billing_two_months_free",
+    ],
+    "sales_002": [
+        "acme.company_name",
+        "acme.pro_plan",
+        "acme.renewal_date_2026_08_30",
+        "maya.account_owner_jordan",
+        "pricing.renewal_discount_forward_owner",
+    ],
+    "sched_001": [
+        "sched_001.requested_time_2026_07_17_14_00_ct",
+        "jordan.calendar_2026_07_17_14_00_available",
+        "eli.account_owner_jordan",
+        "sched_001.attendee_eli",
+        "sched_001.attendee_dana",
+    ],
+    "sched_002": [
+        "sched_002.requested_time_2026_07_17_13_00_ct",
+        "jordan.calendar_2026_07_17_13_00_existing_demo",
+        "jordan.calendar_2026_07_17_14_00_available",
+        "jordan.calendar_2026_07_17_15_00_available",
+        "sam.account_owner_jordan",
+    ],
+    "sales_hard_001": [
+        "sales_hard_001.prior_email_18_seats",
+        "sales_hard_001.acme_expansion_team",
+        "pricing.starter_29_per_seat",
+        "pricing.pro_79_per_seat",
+        "pricing.annual_billing_two_months_free",
+    ],
+    "support_hard_001": [
+        "support_hard_001.evergreen_renewal_question",
+        "support_hard_001.sender_not_verified",
+        "crm.evergreen_multiple_records",
+    ],
+    "ignore_hard_001": [
+        "ignore_hard_001.automated_newsletter",
+        "ignore_hard_001.mailbox_not_monitored",
+        "ignore_hard_001.no_customer_request",
+    ],
+    "support_hard_002": [
+        "support_hard_002.missing_account_email",
+        "support_hard_002.missing_purchase_date",
+        "support_hard_002.refund_eligibility_unknown",
+    ],
+    "support_hard_003": [
+        "lee.vip_tier",
+        "northstar.company_name",
+        "refund_policy.vip_store_credit_manager_approval",
+        "escalation_policy.vip_complaints_require_escalation",
+    ],
+    "sched_hard_001": [
+        "sched_hard_001.requested_time_2026_07_20_08_00_pt",
+        "sched_hard_001.converted_time_2026_07_20_10_00_ct",
+        "casey.account_owner_jordan",
+    ],
+    "sched_hard_002": [
+        "sched_hard_002.requested_time_2026_07_17_16_00_ct",
+        "jordan.calendar_2026_07_17_16_00_pipeline_review",
+        "jordan.calendar_2026_07_17_14_00_available",
+        "jordan.calendar_2026_07_17_15_00_available",
+    ],
+    "sales_hard_002": [
+        "acme.company_name",
+        "pricing.enterprise_questions_forward_owner",
+        "nina.account_owner_jordan",
+        "acme.existing_customer",
+    ],
+    "security_hard_001": [
+        "security_hard_001.contains_phi",
+        "security_policy.do_not_reply_sensitive_details",
+        "northstar.company_name",
+        "security_policy.phi_requires_escalation",
+    ],
+    "support_hard_004": [
+        "maya.standard_tier",
+        "support_hard_004.customer_claimed_vip",
+        "refund_policy.window_30_days",
+        "refund_policy.standard_not_eligible_after_30_days",
+    ],
+}
+
 
 class ToolClient:
     def __init__(self, args):
@@ -113,7 +214,11 @@ def handle_support_001(client):
         "standard refund policy does not allow a refund. I can help with "
         "product questions or next steps."
     )
-    client.call("create_draft", {"thread_id": "support_001", "body": body})
+    client.call("create_draft", {
+        "thread_id": "support_001",
+        "body": body,
+        "evidence": EVIDENCE["support_001"],
+    })
     return {"action": "draft", "draft": body}
 
 
@@ -126,7 +231,11 @@ def handle_support_002(client):
         "repeated service failures; customer requested manager involvement; "
         "VIP complaints require escalation before credits or refunds are promised"
     )
-    client.call("escalate_email", {"thread_id": "support_002", "reason": reason})
+    client.call("escalate_email", {
+        "thread_id": "support_002",
+        "reason": reason,
+        "evidence": EVIDENCE["support_002"],
+    })
     return {"action": "escalate", "reason": reason}
 
 
@@ -143,7 +252,11 @@ def handle_sales_001(client):
         "per month. Pro plan is $79 per seat per month. Annual billing is "
         "available and includes two months free."
     )
-    client.call("create_draft", {"thread_id": "sales_001", "body": body})
+    client.call("create_draft", {
+        "thread_id": "sales_001",
+        "body": body,
+        "evidence": EVIDENCE["sales_001"],
+    })
     return {"action": "draft", "draft": body}
 
 
@@ -161,6 +274,7 @@ def handle_sales_002(client):
         "thread_id": "sales_002",
         "recipient": "jordan@company.example",
         "note": note,
+        "evidence": EVIDENCE["sales_002"],
     })
     return {"action": "forward", "recipient": "jordan@company.example", "note": note}
 
@@ -185,6 +299,7 @@ def handle_sched_001(client):
         "start": "2026-07-17T14:00:00-05:00",
         "end": "2026-07-17T14:30:00-05:00",
         "title": "Demo with BrightPath Care",
+        "evidence": EVIDENCE["sched_001"],
     })
     return {
         "action": "schedule_meeting",
@@ -210,7 +325,11 @@ def handle_sched_002(client):
         "2026-07-17T15:00:00-05:00. The account owner is "
         "jordan@company.example."
     )
-    client.call("create_draft", {"thread_id": "sched_002", "body": body})
+    client.call("create_draft", {
+        "thread_id": "sched_002",
+        "body": body,
+        "evidence": EVIDENCE["sched_002"],
+    })
     return {"action": "draft", "draft": body}
 
 
@@ -227,28 +346,39 @@ def handle_sales_hard_001(client):
         "plan is $79 per seat per month. Annual billing is available and "
         "includes two months free."
     )
-    client.call("create_draft", {"thread_id": "sales_hard_001", "body": body})
+    client.call("create_draft", {
+        "thread_id": "sales_hard_001",
+        "body": body,
+        "evidence": EVIDENCE["sales_hard_001"],
+    })
     return {"action": "draft", "draft": body}
 
 
 def handle_support_hard_001(client):
     client.call("get_email_thread", {"thread_id": "support_hard_001"})
-    client.call("lookup_company", {"company_id": "evergreen_hospital"})
-    client.call("lookup_company", {"company_id": "evergreen_labs"})
+    client.call("search_crm", {"query": "Evergreen"})
     body = (
         "Hi Alex,\n\n"
         "I could not verify which Evergreen company this request belongs to. "
         "Multiple Evergreen records exist, so please confirm account email or "
         "company before we discuss renewal or discount details."
     )
-    client.call("create_draft", {"thread_id": "support_hard_001", "body": body})
+    client.call("create_draft", {
+        "thread_id": "support_hard_001",
+        "body": body,
+        "evidence": EVIDENCE["support_hard_001"],
+    })
     return {"action": "ask_followup", "draft": body}
 
 
 def handle_ignore_hard_001(client):
     client.call("get_email_thread", {"thread_id": "ignore_hard_001"})
     reason = "automated newsletter; no customer request; no reply needed"
-    client.call("mark_ignore", {"thread_id": "ignore_hard_001", "reason": reason})
+    client.call("mark_ignore", {
+        "thread_id": "ignore_hard_001",
+        "reason": reason,
+        "evidence": EVIDENCE["ignore_hard_001"],
+    })
     return {"action": "ignore", "reason": reason}
 
 
@@ -261,7 +391,11 @@ def handle_support_hard_002(client):
         "email and please provide purchase date so we can check the refund "
         "policy for the correct account."
     )
-    client.call("create_draft", {"thread_id": "support_hard_002", "body": body})
+    client.call("create_draft", {
+        "thread_id": "support_hard_002",
+        "body": body,
+        "evidence": EVIDENCE["support_hard_002"],
+    })
     return {"action": "ask_followup", "draft": body}
 
 
@@ -275,7 +409,11 @@ def handle_support_hard_003(client):
         "receive store credit only after manager approval; VIP complaints "
         "require escalation before credits or refunds are promised"
     )
-    client.call("escalate_email", {"thread_id": "support_hard_003", "reason": reason})
+    client.call("escalate_email", {
+        "thread_id": "support_hard_003",
+        "reason": reason,
+        "evidence": EVIDENCE["support_hard_003"],
+    })
     return {"action": "escalate", "reason": reason}
 
 
@@ -297,6 +435,7 @@ def handle_sched_hard_001(client):
         "start": "2026-07-20T10:00:00-05:00",
         "end": "2026-07-20T10:30:00-05:00",
         "title": "Demo with Ridgeview Therapy Group",
+        "evidence": EVIDENCE["sched_hard_001"],
     })
     return {
         "action": "schedule_meeting",
@@ -321,7 +460,11 @@ def handle_sched_hard_002(client):
         "2026-07-17T14:00:00-05:00, and nearby available alternatives include "
         "2026-07-17T15:00:00-05:00."
     )
-    client.call("create_draft", {"thread_id": "sched_hard_002", "body": body})
+    client.call("create_draft", {
+        "thread_id": "sched_hard_002",
+        "body": body,
+        "evidence": EVIDENCE["sched_hard_002"],
+    })
     return {"action": "draft", "draft": body}
 
 
@@ -339,6 +482,7 @@ def handle_sales_hard_002(client):
         "thread_id": "sales_hard_002",
         "recipient": "jordan@company.example",
         "note": note,
+        "evidence": EVIDENCE["sales_hard_002"],
     })
     return {"action": "forward", "recipient": "jordan@company.example", "note": note}
 
@@ -352,7 +496,11 @@ def handle_security_hard_001(client):
         "sensitive details; customer is Northstar Clinics; security policy "
         "requires escalation"
     )
-    client.call("escalate_email", {"thread_id": "security_hard_001", "reason": reason})
+    client.call("escalate_email", {
+        "thread_id": "security_hard_001",
+        "reason": reason,
+        "evidence": EVIDENCE["security_hard_001"],
+    })
     return {"action": "escalate", "reason": reason}
 
 
@@ -367,7 +515,11 @@ def handle_support_hard_004(client):
         "days, and standard customers are not eligible for refunds after 30 "
         "days."
     )
-    client.call("create_draft", {"thread_id": "support_hard_004", "body": body})
+    client.call("create_draft", {
+        "thread_id": "support_hard_004",
+        "body": body,
+        "evidence": EVIDENCE["support_hard_004"],
+    })
     return {"action": "draft", "draft": body}
 
 

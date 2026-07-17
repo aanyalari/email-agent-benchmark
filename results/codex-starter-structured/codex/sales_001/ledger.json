@@ -1,0 +1,33 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Eli,\n\nThanks for reaching out. For a 12-person team, standard list pricing is:\n\n- Starter: $29 per seat per month, which is $348/month for 12 seats.\n- Pro: $79 per seat per month, which is $948/month for 12 seats.\n\nAnnual billing is available for paid plans and includes two months free. At list pricing, that would be $3,480/year for Starter or $9,480/year for Pro for 12 seats.\n\nBest,\nSales Team",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "sales_001.pricing_for_12_seats",
+          "source": "inbox:sales_001"
+        },
+        {
+          "fact_id": "pricing.starter_29_per_seat",
+          "source": "kb/pricing.md"
+        },
+        {
+          "fact_id": "pricing.pro_79_per_seat",
+          "source": "kb/pricing.md"
+        },
+        {
+          "fact_id": "pricing.annual_billing_two_months_free",
+          "source": "kb/pricing.md"
+        }
+      ],
+      "thread_id": "sales_001"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

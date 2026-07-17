@@ -1,0 +1,15 @@
+{
+  "crm_updates": [],
+  "drafts": [],
+  "escalations": [
+    {
+      "created_by": "agent",
+      "reason": "customer is VIP tier; customer is Northstar Clinics; customer reports repeated service failures; customer requested manager involvement; VIP complaints require escalation before credits or refunds are promised",
+      "thread_id": "support_002"
+    }
+  ],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

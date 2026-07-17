@@ -1,0 +1,6 @@
+{"arguments": {"thread_id": "sched_001"}, "category": "inbox", "error": "", "ok": true, "tool": "get_email_thread", "ts": 1784327754.1980941}
+{"arguments": {"email": "eli@brightpath.example"}, "category": "crm", "error": "", "ok": true, "tool": "lookup_customer", "ts": 1784327758.746664}
+{"arguments": {"email": "dana@brightpath.example"}, "category": "crm", "error": "", "ok": true, "tool": "lookup_customer", "ts": 1784327758.7490501}
+{"arguments": {"query": "scheduling demo"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784327758.753818}
+{"arguments": {"date_range": "2026-07-17", "user_id": "jordan@company.example"}, "category": "calendar", "error": "", "ok": true, "tool": "get_calendar_availability", "ts": 1784327761.00946}
+{"arguments": {"attendees": ["eli@brightpath.example", "dana@brightpath.example", "jordan@company.example"], "end": "2026-07-17T14:30:00-05:00", "evidence": ["sched_001.requested_time_2026_07_17_14_00_ct", "sched_001.attendee_eli", "sched_001.attendee_dana", "eli.account_owner_jordan", "brightpath.company_name", "jordan.calendar_2026_07_17_14_00_available"], "start": "2026-07-17T14:00:00-05:00", "thread_id": "sched_001", "title": "BrightPath Care Demo"}, "category": "action", "error": "", "ok": true, "tool": "schedule_meeting", "ts": 1784327770.963757}

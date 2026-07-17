@@ -68,6 +68,8 @@ email-response-benchmark/
   agents.json
   runner.py
   report.py
+  web/
+    app.py
   data/
     inbox.json
     crm.json
@@ -536,6 +538,7 @@ get_email_thread(thread_id)
 search_previous_emails(query)
 lookup_customer(email)
 lookup_company(company_id)
+search_crm(query)
 search_kb(query)
 get_calendar_availability(user_id, date_range)
 ```
@@ -1008,7 +1011,60 @@ python3 runner.py --agents scripted_tool_agent --tasks-file tasks/tasks_hard.jso
 We are building /Users/aanyalari/benchmark/email-response-benchmark. Please complete Phase 10 from PLAN.md: add tasks/tasks_hard.json with harder email-agent tasks and update fake data as needed. Keep tasks deterministic and machine-checkable.
 ```
 
-## Phase 11: Add Real MCP-Capable Agents
+## Phase 11: Build Local Web Dashboard
+
+### Goal
+
+Add a local browser dashboard like `flight-benchmark/web/app.py` so the benchmark
+has something visible to inspect.
+
+### Files To Create Or Edit
+
+```text
+web/app.py
+README.md
+PLAN.md
+```
+
+### Dashboard Should Show
+
+- Agent list
+- Starter and hard task catalogs
+- Latest run pass/fail table
+- Per-run ledger, tool calls, result JSON, trace, and stderr
+- A small run launcher for selected agents and tasks
+
+### CLI
+
+```bash
+python3 web/app.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:8798
+```
+
+### Done When
+
+These work:
+
+```bash
+python3 -m py_compile web/app.py
+python3 web/app.py
+```
+
+The browser page can load the latest `runs/summary.json`, inspect a run
+directory, and launch at least one `scripted_tool_agent` task.
+
+### New Chat Prompt
+
+```text
+We are building /Users/aanyalari/benchmark/email-response-benchmark. Please complete Phase 11 from PLAN.md: add a stdlib-only local web dashboard in web/app.py that shows tasks, agents, latest results, per-run artifacts, and can launch selected benchmark runs.
+```
+
+## Phase 12: Add Real MCP-Capable Agents
 
 ### Goal
 
@@ -1053,10 +1109,10 @@ python3 runner.py --agents <agent_name> --tasks support_001
 ### New Chat Prompt
 
 ```text
-We are building /Users/aanyalari/benchmark/email-response-benchmark. Please complete Phase 11 from PLAN.md: add one real MCP-capable agent adapter to agents.json and update runner.py/README.md only as needed. Preserve the same fake tools and grading.
+We are building /Users/aanyalari/benchmark/email-response-benchmark. Please complete Phase 12 from PLAN.md: add one real MCP-capable agent adapter to agents.json and update runner.py/README.md only as needed. Preserve the same fake tools and grading.
 ```
 
-## Phase 12: Optional Black-Box ChatGPT/Claude Upload Evaluation
+## Phase 13: Optional Black-Box ChatGPT/Claude Upload Evaluation
 
 ### Goal
 
@@ -1098,7 +1154,7 @@ There is a documented process for manually asking ChatGPT/Claude to handle one t
 ### New Chat Prompt
 
 ```text
-We are building /Users/aanyalari/benchmark/email-response-benchmark. Please complete Phase 12 from PLAN.md: create a black-box upload evaluation bundle and instructions for manually testing ChatGPT/Claude without exposing hidden answer keys.
+We are building /Users/aanyalari/benchmark/email-response-benchmark. Please complete Phase 13 from PLAN.md: create a black-box upload evaluation bundle and instructions for manually testing ChatGPT/Claude without exposing hidden answer keys.
 ```
 
 ## MVP Completion Checklist
@@ -1115,6 +1171,7 @@ python3 -m py_compile server/email_mcp.py
 python3 -m py_compile grading/grader.py
 python3 -m py_compile runner.py
 python3 -m py_compile report.py
+python3 -m py_compile web/app.py
 python3 runner.py --agents baseline_no_tools,scripted_tool_agent
 python3 report.py
 ```

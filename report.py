@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aggregate email benchmark result.json files into a readable report."""
+"""Summarize the latest email benchmark run into a readable report."""
 import argparse
 import json
 from collections import defaultdict
@@ -18,9 +18,36 @@ def _result_paths(runs_dir):
     return sorted(Path(runs_dir).glob("*/*/result.json"))
 
 
-def _load_results(runs_dir):
-    results = []
+def _load_summary_results(runs_dir):
+    path = Path(runs_dir) / "summary.json"
+    if not path.exists():
+        return None, []
+
     warnings = []
+    try:
+        results = _load_json(path)
+    except (OSError, json.JSONDecodeError) as exc:
+        return None, [f"could not read {path}: {exc}"]
+
+    if not isinstance(results, list):
+        return None, [f"could not read {path}: expected JSON array"]
+
+    normalized = []
+    for idx, result in enumerate(results, start=1):
+        if not isinstance(result, dict):
+            warnings.append(f"skipping {path} entry {idx}: expected JSON object")
+            continue
+        normalized.append(result)
+
+    return normalized, warnings
+
+
+def _load_results(runs_dir):
+    summary_results, warnings = _load_summary_results(runs_dir)
+    if summary_results is not None:
+        return summary_results, warnings
+
+    results = []
     for path in _result_paths(runs_dir):
         try:
             result = _load_json(path)
@@ -96,12 +123,14 @@ def _print_table(headers, rows):
 def _agent_summary(agent, results):
     total = len(results)
     passed = sum(1 for result in results if result.get("passed") is True)
+    fact_ids_ok = sum(1 for result in results if result.get("required_fact_ids_ok") is not False)
     avg_calls = sum(float(result.get("n_tool_calls", 0) or 0) for result in results) / total
     failed_calls = sum(int(result.get("n_failed_tool_calls", 0) or 0) for result in results)
     avg_wall = sum(float(result.get("wall_s", 0) or 0) for result in results) / total
     return [
         agent,
         f"{passed}/{total}",
+        f"{fact_ids_ok}/{total}",
         f"{avg_calls:.1f}",
         str(failed_calls),
         f"{avg_wall:.1f}s",
@@ -152,7 +181,10 @@ def print_report(results, task_order):
         _agent_summary(agent, [result for result in results if str(result.get("agent")) == agent])
         for agent in agents
     ]
-    _print_table(["agent", "pass", "avg calls", "failed calls", "avg wall"], summary_rows)
+    _print_table(
+        ["agent", "pass", "fact ids", "avg calls", "failed calls", "avg wall"],
+        summary_rows,
+    )
 
     print()
     print("failures:")

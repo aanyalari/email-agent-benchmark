@@ -1,0 +1,57 @@
+{
+  "action_accuracy": true,
+  "agent": "codex",
+  "agent_kind": "codex",
+  "calendar_ok": true,
+  "critical_tool_calls_ok": true,
+  "crm_ok": true,
+  "evidence_fact_ids": [
+    "acme.company_name",
+    "acme.existing_customer",
+    "acme.pro_plan",
+    "acme.renewal_date_2026_08_30",
+    "maya.account_owner_jordan"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 0,
+    "escalations": 0,
+    "forwards": 1,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [
+    "pricing.renewal_discount_forward_owner"
+  ],
+  "n_failed_action_tool_calls": 0,
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 9,
+  "passed": false,
+  "reasons": [
+    "missing required fact id: pricing.renewal_discount_forward_owner"
+  ],
+  "required_fact_ids_ok": false,
+  "required_facts_ok": false,
+  "required_facts_text_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-starter-structured-v2/codex/sales_002",
+  "task_id": "sales_002",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 36.9,
+  "warnings": [
+    "legacy text check: missing required fact: customer is Acme Health",
+    "legacy text check: missing required fact: customer is on the Pro plan",
+    "legacy text check: missing required fact: renewal date is 2026-08-30",
+    "legacy text check: missing required fact: account owner is jordan@company.example",
+    "legacy text check: missing required fact: renewal discount questions must be forwarded to the account owner"
+  ]
+}

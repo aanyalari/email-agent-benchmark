@@ -1,0 +1,54 @@
+{
+  "action_accuracy": true,
+  "agent": "codex",
+  "agent_kind": "codex",
+  "calendar_ok": true,
+  "critical_tool_calls_ok": true,
+  "crm_ok": true,
+  "evidence_fact_ids": [
+    "escalation_policy.vip_complaints_require_escalation",
+    "northstar.company_name",
+    "priya.vip_tier",
+    "refund_policy.vip_store_credit_manager_approval",
+    "support_002.manager_requested",
+    "support_002.repeated_service_failures"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 0,
+    "escalations": 1,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [],
+  "n_failed_action_tool_calls": 0,
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 8,
+  "passed": true,
+  "reasons": [],
+  "required_fact_ids_ok": true,
+  "required_facts_ok": true,
+  "required_facts_text_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-starter-structured-v2/codex/support_002",
+  "task_id": "support_002",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 30.0,
+  "warnings": [
+    "legacy text check: missing required fact: customer is VIP tier",
+    "legacy text check: missing required fact: customer is Northstar Clinics",
+    "legacy text check: missing required fact: customer reports repeated service failures",
+    "legacy text check: missing required fact: customer requested manager involvement",
+    "legacy text check: missing required fact: VIP complaints require escalation before credits or refunds are promised"
+  ]
+}

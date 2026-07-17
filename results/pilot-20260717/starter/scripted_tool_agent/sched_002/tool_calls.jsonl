@@ -1,0 +1,5 @@
+{"arguments": {"thread_id": "sched_002"}, "category": "inbox", "error": "", "ok": true, "tool": "get_email_thread", "ts": 1784325376.471055}
+{"arguments": {"email": "sam@greenleaf.example"}, "category": "crm", "error": "", "ok": true, "tool": "lookup_customer", "ts": 1784325376.471301}
+{"arguments": {"query": "unavailable"}, "category": "kb", "error": "", "ok": true, "tool": "search_kb", "ts": 1784325376.471675}
+{"arguments": {"date_range": "2026-07-17", "user_id": "jordan@company.example"}, "category": "calendar", "error": "", "ok": true, "tool": "get_calendar_availability", "ts": 1784325376.471824}
+{"arguments": {"body": "Hi Sam,\n\nThe requested time is 2026-07-17T13:00:00-05:00. The requested time conflicts with an existing demo. Nearby available alternatives include 2026-07-17T14:00:00-05:00, and nearby available alternatives include 2026-07-17T15:00:00-05:00. The account owner is jordan@company.example.", "thread_id": "sched_002"}, "category": "action", "error": "", "ok": true, "tool": "create_draft", "ts": 1784325376.47212}

@@ -59,8 +59,8 @@ Agents access this world through `server/email_mcp.py` or through the local
 adapter arguments used by the starter agents.
 
 The MCP server exposes read tools such as `get_email_thread`,
-`search_previous_emails`, `lookup_customer`, `lookup_company`, `search_kb`, and
-`get_calendar_availability`. It also exposes action tools such as
+`search_previous_emails`, `lookup_customer`, `lookup_company`, `search_crm`,
+`search_kb`, and `get_calendar_availability`. It also exposes action tools such as
 `create_draft`, `send_email`, `forward_email`, `schedule_meeting`,
 `escalate_email`, and `mark_ignore`.
 
@@ -72,7 +72,8 @@ Tasks live in `tasks/tasks.json`. Each task defines:
 - `prompt`: instruction passed to the agent
 - `thread_id`: email thread being handled
 - `expected_action`: primary action the agent should take
-- `required_facts`: facts that must appear in the relevant action text
+- `required_fact_ids`: stable fact IDs that must be recorded in action evidence
+- `required_facts`: legacy prose facts used as a non-blocking text check
 - `forbidden_claims`: claims that must not appear
 - `expected_tool_categories`: required evidence sources, such as `inbox`,
   `crm`, `calendar`, and `kb`
@@ -84,17 +85,23 @@ Human-readable notes for the starter tasks live in `tasks/GROUND_TRUTH.md`.
 
 Agent adapters are configured in `agents.json`.
 
-Current starter agents:
+Current agents:
 
 - `baseline_no_tools`: reads only inbox data and does not mutate the ledger. It
   is expected to fail most action-oriented tasks and is useful as a baseline.
 - `scripted_tool_agent`: deterministic smoke-test adapter that performs the
   intended workflow for the six MVP tasks. It validates the runner, ledger,
   tool-call logging, and grader.
+- `codex`: real Codex CLI adapter that connects to `server/email_mcp.py` as a
+  stdio MCP server. It requires a logged-in Codex CLI plus provider network
+  access, and it runs from the per-run artifact directory so task data should be
+  reached through MCP tools rather than direct file reads. The headless adapter
+  uses `--dangerously-bypass-approvals-and-sandbox` because this Codex CLI build
+  otherwise auto-cancels MCP tool calls in non-interactive runs.
 
-These adapters are intentionally simple. Future model-backed adapters can be
-added to `agents.json` as long as their command writes the expected run
-artifacts through the provided paths.
+The first two adapters are intentionally simple. Future model-backed adapters can
+be added to `agents.json` as long as they use the same fake tools and write the
+expected run artifacts through the provided paths.
 
 ## Run The Benchmark
 
@@ -112,6 +119,17 @@ python3 runner.py --agents scripted_tool_agent --tasks support_001,sched_001
 python3 report.py
 ```
 
+Run the real Codex MCP adapter:
+
+```bash
+python3 runner.py --agents codex --tasks support_001 --timeout 420
+python3 report.py
+```
+
+When comparing agents, keep the evaluation mode the same. Do not compare an MCP
+agent against an uploaded-file/manual-chat run unless the report labels those as
+different modes.
+
 Run repeated trials:
 
 ```bash
@@ -126,6 +144,25 @@ python3 runner.py --help
 python3 report.py --help
 python3 grading/grader.py --help
 ```
+
+## Open The Dashboard
+
+Start the local browser dashboard:
+
+```bash
+python3 web/app.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8798
+```
+
+The dashboard shows agents, starter and hard task catalogs, the latest pass/fail
+results, and per-run artifacts. Select a result row to inspect `ledger.json`,
+`tool_calls.jsonl`, `result.json`, stdout trace, and stderr. The run controls can
+launch selected agents and tasks from the browser.
 
 ## Produced Files
 
@@ -159,7 +196,8 @@ runs/summary.json
 Artifact meanings:
 
 - `ledger.json`: workflow state created by the agent, including drafts,
-  sent emails, forwards, escalations, meetings, ignored threads, and CRM updates
+  sent emails, forwards, escalations, meetings, ignored threads, CRM updates,
+  and structured evidence fact IDs attached to actions
 - `tool_calls.jsonl`: JSONL log of tool name, category, arguments, success, and
   error text
 - `mcp_config.json`: per-run MCP server configuration for agents that need it
@@ -174,30 +212,43 @@ Artifact meanings:
 
 - `passed`: true when there are no grading reasons
 - `reasons`: human-readable failures, such as missing ledger actions, missing
-  facts, forbidden claims, missing tool categories, or calendar conflicts
+  structured fact IDs, forbidden claims, missing tool categories, failed action
+  tool calls, or calendar conflicts
 - `warnings`: non-fatal issues, including malformed tool logs or failed tool
   calls
 - `action_accuracy`: whether the expected primary ledger action was recorded
-- `required_facts_ok`: whether required facts appeared in the relevant action
-  text
+- `required_facts_ok`: compatibility field; uses structured fact IDs when
+  present, otherwise falls back to legacy text facts
+- `required_fact_ids_ok`: whether required fact IDs were recorded in action
+  evidence
+- `required_facts_text_ok`: whether legacy prose facts appeared in the relevant
+  action text
 - `forbidden_claims_ok`: whether prohibited claims were avoided
 - `calendar_ok`: whether scheduled meetings satisfy calendar constraints
 - `crm_ok`: whether required CRM tool evidence was used
 - `tool_categories_ok`: whether the expected source categories were used
+- `critical_tool_calls_ok`: whether action tools avoided failed calls
+- `evidence_fact_ids`: fact IDs recorded on the expected action
 - `n_tool_calls`: number of logged tool calls
 - `n_failed_tool_calls`: number of logged failed tool calls
+- `n_failed_action_tool_calls`: number of failed action-category tool calls
 - `wall_s`: wall-clock runtime in seconds, added by `runner.py`
 
-`report.py` aggregates all `runs/*/*/result.json` files into a task-by-agent
+`report.py` summarizes the latest `runs/summary.json` when present, falling back
+to `runs/*/*/result.json` files if no summary exists. It prints a task-by-agent
 matrix, per-agent pass rates, average tool calls, failed tool call counts,
 average wall time, and failure reasons.
 
 ## Current Limitations
 
-- The task suite is currently the six-task MVP in `tasks/tasks.json`.
+- The benchmark has starter tasks in `tasks/tasks.json` and a hard suite in
+  `tasks/tasks_hard.json`. Real CLI-agent runs depend on the configured CLI's
+  local auth and network availability.
 - The deterministic scripted agent is a wiring check, not a real model result.
-- Grading is intentionally exact and local. Required facts and forbidden claims
-  are checked with string matching over the relevant ledger text.
+- Grading is intentionally exact and local. Required facts are primarily checked
+  through structured evidence fact IDs; legacy prose fact checks are non-blocking
+  warnings when `required_fact_ids` are present. Forbidden claims are still
+  checked with string matching over the relevant ledger text.
 - The grader checks tool categories, not full reasoning quality.
 - Tone, concision, and user experience quality are only indirectly evaluated.
 - `runs/` is ignored by git, so benchmark outputs are local unless explicitly
