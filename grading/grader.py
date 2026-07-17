@@ -27,9 +27,7 @@ PRIMARY_ACTION_TO_LEDGER_FIELD = {
 }
 
 
-ACTION_LEDGER_FIELDS = tuple(
-    field for field in LEDGER_FIELDS if field != "crm_updates"
-)
+ACTION_LEDGER_FIELDS = tuple(LEDGER_FIELDS)
 
 
 def _load_json(path):
