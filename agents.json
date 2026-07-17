@@ -1,19 +1,37 @@
 {
-  "_comment": "Agent command templates will be added in a later phase.",
-  "baseline-no-tools": {
+  "_comment": "Agent adapters. Placeholders: {prompt}, {mcp_config}, {server}, {ledger}, {calls_log}, {inbox}, {crm}, {calendar}, {kb_dir}, {task_id}.",
+  "baseline_no_tools": {
     "kind": "local",
+    "uses_mcp": false,
     "cmd": [
       "python3",
       "agents/baseline_no_tools.py",
-      "{prompt}"
+      "--prompt",
+      "{prompt}",
+      "--inbox",
+      "{inbox}"
     ]
   },
-  "scripted-tool-agent": {
+  "scripted_tool_agent": {
     "kind": "local",
+    "uses_mcp": false,
     "cmd": [
       "python3",
       "agents/scripted_tool_agent.py",
-      "{prompt}"
+      "--task-id",
+      "{task_id}",
+      "--ledger",
+      "{ledger}",
+      "--inbox",
+      "{inbox}",
+      "--crm",
+      "{crm}",
+      "--calendar",
+      "{calendar}",
+      "--kb-dir",
+      "{kb_dir}",
+      "--calls-log",
+      "{calls_log}"
     ]
   }
 }
