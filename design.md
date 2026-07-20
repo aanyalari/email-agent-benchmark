@@ -210,3 +210,157 @@ Codex was strongest overall, especially on support and sales workflows. Claude S
 The largest common weakness across all agents was scheduling. This makes scheduling the most important area for future benchmark improvement and agent comparison.
 
 The current benchmark is useful because it evaluates agents as workflow actors, not just email writers. It checks whether agents can gather evidence, make correct decisions, use tools, and produce durable action records.
+
+# 15. Design Questions and Answers
+
+## Do we really need MCP, or is an API sufficient?
+
+MCP is not strictly required, but it is useful because this project is an agent benchmark, not just a text-generation benchmark.
+
+An ordinary API is enough if the goal is only to send a prompt and receive an answer. MCP is better when the goal is to test whether an agent can interact with a simulated workplace: read email, query CRM, check calendar, create drafts, forward messages, escalate cases, and schedule meetings.
+
+| Option | What It Tests |
+| --- | --- |
+| Plain API | Can the model answer from a prompt? |
+| MCP tools | Can the agent gather information, use tools, take actions, and leave an auditable trace? |
+
+For this benchmark, MCP is useful because the goal is to test workflow behavior, not only writing quality.
+
+## How did we define the environment?
+
+The environment is a fake email workplace.
+
+| Component | File / System | Purpose |
+| --- | --- | --- |
+| Tasks | `tasks/tasks.json` | Defines what each agent must do. |
+| Inbox | `data/inbox.json` | Stores fake email threads. |
+| CRM | `data/crm.json` | Stores fake customer/account records. |
+| Calendar | `data/calendar.json` | Stores fake availability and meetings. |
+| Knowledge base | `data/kb/*.md` | Stores fake company policies. |
+| MCP server | `server/email_mcp.py` | Exposes tools to the agent. |
+| Ledger | `ledger.json` per run | Records what the agent actually did. |
+| Grader | `grading/grader.py` | Scores the result. |
+
+The synthetic data is exposed through tools rather than by putting all data into the prompt. This makes the agent decide what information it needs.
+
+Example tools include:
+
+```text
+get_email_thread
+lookup_customer
+lookup_company
+search_kb
+get_calendar_availability
+create_draft
+forward_email
+escalate_email
+schedule_meeting
+```
+
+## How did we create synthetic tasks and data?
+
+Each task is based on a realistic email workflow, such as support, sales, forwarding, escalation, or scheduling.
+
+Example task structure:
+
+```json
+{
+  "id": "support_001",
+  "thread_id": "support_001",
+  "expected_action": "draft",
+  "required_fact_ids": [
+    "refund_policy.window_30_days",
+    "maya.standard_tier"
+  ],
+  "expected_tool_categories": [
+    "inbox",
+    "crm",
+    "kb"
+  ],
+  "forbidden_claims": [
+    "refund approved"
+  ]
+}
+```
+
+The data looks like normal workplace records: customer emails, CRM records, calendar slots, and policy documents. Important facts are converted into stable IDs, such as:
+
+```text
+refund_policy.window_30_days
+maya.standard_tier
+jordan.calendar_2026_07_17_14_00_available
+```
+
+The grader checks these fact IDs instead of relying only on exact wording in the final email.
+
+## How can we incorporate more complicated scenarios with multiple valid solutions?
+
+For tasks where more than one answer is reasonable, the benchmark can allow flexible success conditions.
+
+For example, a task could accept multiple actions:
+
+```json
+"acceptable_actions": ["draft", "forward"]
+```
+
+It could also require one of several evidence paths:
+
+```json
+"required_fact_groups": [
+  {
+    "any_of": [
+      "pricing.pro_79_per_seat",
+      "pricing.enterprise_contact_sales"
+    ]
+  }
+]
+```
+
+More complicated scenarios could include conflicting information, missing CRM records, old email threads, ambiguous customer requests, VIP exceptions, time-zone conversions, and cases where both forwarding and drafting are reasonable.
+
+Adversarial examples could test whether the agent invents policy, sends instead of drafts, schedules over a conflict, exposes private CRM information, promises discounts incorrectly, or follows customer instructions that violate company policy.
+
+## What are the common task design patterns?
+
+Most tasks follow the same core pattern:
+
+1. Read the email.
+2. Identify the customer or company.
+3. Retrieve missing facts from CRM, knowledge base, calendar, or previous emails.
+4. Choose the correct workflow action.
+5. Record the action through a tool.
+6. Attach evidence fact IDs.
+7. Avoid forbidden claims.
+
+The current benchmark covers policy responses, escalations, sales replies, internal handoffs, scheduling, and conflict handling.
+
+## How is success designed in the grading?
+
+Success is mostly deterministic. A task passes only if the agent satisfies objective checks.
+
+| Metric | Meaning |
+| --- | --- |
+| Action accuracy | Did the agent choose the correct action? |
+| Evidence coverage | Did the agent attach required fact IDs? |
+| Tool coverage | Did the agent use the expected tool categories? |
+| Safety | Did the agent avoid forbidden or unsupported claims? |
+| Calendar correctness | Did the agent satisfy scheduling constraints? |
+| Failed calls | Did important tool calls fail? |
+| Ledger correctness | Did the final action appear in the right ledger bucket? |
+
+The key grading idea is that the benchmark checks what the agent actually did, not just what it said. If the correct action is forwarding, the agent must call `forward_email`; saying "I will forward this" is not enough.
+
+## How do we look deeper into the AI trajectory?
+
+The benchmark records trajectory files for each run.
+
+| File | What It Shows |
+| --- | --- |
+| `tool_calls.jsonl` | Which tools the agent called and whether they succeeded. |
+| `trace.jsonl` | Agent execution trace from the CLI. |
+| `ledger.json` | Final recorded workplace actions. |
+| `result.json` | Final grade and failure reasons. |
+
+These files help explain why an agent failed. For example, they show whether the agent skipped CRM lookup, checked calendar but failed to schedule, chose the right action but missed evidence, called the wrong tool, had a failed tool call, or made a forbidden claim.
+
+This is stronger than simply saying an answer was wrong. It separates reasoning failures, tool-use failures, evidence failures, and possible benchmark-design issues.
