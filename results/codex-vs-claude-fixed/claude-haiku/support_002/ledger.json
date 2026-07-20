@@ -1,0 +1,33 @@
+{
+  "crm_updates": [],
+  "drafts": [],
+  "escalations": [
+    {
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "support_002.repeated_service_failures",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "support_002.manager_requested",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "priya.vip_tier",
+          "source": "crm:priya@northstar.example"
+        },
+        {
+          "fact_id": "northstar.company_name",
+          "source": "crm:company/northstar"
+        }
+      ],
+      "reason": "VIP customer (Priya Raman, VP Ops at Northstar Clinics) reporting third outage this quarter affecting critical business process. Explicitly requests manager involvement and credit/refund discussion before renewal (2026-08-01). Requires account owner taylor@company.example coordination.",
+      "thread_id": "support_002"
+    }
+  ],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

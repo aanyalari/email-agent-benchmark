@@ -84,6 +84,65 @@
       "{prompt}"
     ]
   },
+  "claude-opus": {
+    "_note": "Real Claude Code adapter. Requires installed/logged-in Claude CLI. Most capable, slowest, most expensive.",
+    "kind": "claude",
+    "uses_mcp": true,
+    "cwd": "{run_dir}",
+    "cmd": [
+      "claude",
+      "-p",
+      "--output-format",
+      "stream-json",
+      "--verbose",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{mcp_config}",
+      "--allowedTools",
+      "mcp__email",
+      "--disallowedTools",
+      "Bash,Read,Write,Edit,Glob,Grep,WebSearch,WebFetch",
+      "--model",
+      "opus",
+      "--max-turns",
+      "50",
+      "{prompt}"
+    ]
+  },
+  "gpt-4o": {
+    "_note": "OpenAI GPT-4o via openai_mcp_agent.py wrapper. Requires: pip install openai mcp  and  OPENAI_API_KEY env var.",
+    "kind": "openai",
+    "uses_mcp": true,
+    "cwd": "{run_dir}",
+    "cmd": [
+      "python3",
+      "{root}/agents/openai_mcp_agent.py",
+      "--mcp-config",
+      "{mcp_config}",
+      "--model",
+      "gpt-4o",
+      "--max-turns",
+      "50",
+      "{prompt}"
+    ]
+  },
+  "gpt-4o-mini": {
+    "_note": "OpenAI GPT-4o-mini via openai_mcp_agent.py wrapper. Faster/cheaper than gpt-4o. Requires: pip install openai mcp  and  OPENAI_API_KEY env var.",
+    "kind": "openai",
+    "uses_mcp": true,
+    "cwd": "{run_dir}",
+    "cmd": [
+      "python3",
+      "{root}/agents/openai_mcp_agent.py",
+      "--mcp-config",
+      "{mcp_config}",
+      "--model",
+      "gpt-4o-mini",
+      "--max-turns",
+      "50",
+      "{prompt}"
+    ]
+  },
   "codex": {
     "_note": "Real Codex CLI adapter. Requires a logged-in Codex CLI and provider network access. Headless Codex currently needs --dangerously-bypass-approvals-and-sandbox for MCP tool calls; it runs from the per-run artifact directory so benchmark data should be accessed through email MCP tools, not direct file reads.",
     "kind": "codex",

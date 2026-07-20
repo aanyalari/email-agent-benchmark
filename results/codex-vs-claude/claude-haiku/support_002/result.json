@@ -1,0 +1,49 @@
+{
+  "action_accuracy": false,
+  "agent": "claude-haiku",
+  "agent_kind": "claude",
+  "calendar_ok": true,
+  "evidence_fact_ids": [],
+  "exit_code": 1,
+  "exit_status": "exit=1",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 0,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [
+    "priya.vip_tier",
+    "northstar.company_name",
+    "support_002.repeated_service_failures",
+    "support_002.manager_requested",
+    "escalation_policy.vip_complaints_require_escalation"
+  ],
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 0,
+  "passed": false,
+  "reasons": [
+    "expected escalations count 1, got 0",
+    "expected primary action 'escalate' in ledger field 'escalations'",
+    "expected escalation reason to be non-empty",
+    "missing required fact id: priya.vip_tier",
+    "missing required fact id: northstar.company_name",
+    "missing required fact id: support_002.repeated_service_failures",
+    "missing required fact id: support_002.manager_requested",
+    "missing required fact id: escalation_policy.vip_complaints_require_escalation",
+    "expected tool category 'inbox' was not used",
+    "expected tool category 'crm' was not used",
+    "expected tool category 'kb' was not used"
+  ],
+  "required_fact_ids_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude/claude-haiku/support_002",
+  "task_id": "support_002",
+  "tool_categories": [],
+  "tool_categories_ok": false,
+  "wall_s": 1.2,
+  "warnings": []
+}

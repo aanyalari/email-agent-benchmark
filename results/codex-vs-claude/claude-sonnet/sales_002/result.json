@@ -1,0 +1,49 @@
+{
+  "action_accuracy": false,
+  "agent": "claude-sonnet",
+  "agent_kind": "claude",
+  "calendar_ok": true,
+  "evidence_fact_ids": [],
+  "exit_code": 1,
+  "exit_status": "exit=1",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 0,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [
+    "acme.company_name",
+    "acme.pro_plan",
+    "acme.renewal_date_2026_08_30",
+    "maya.account_owner_jordan",
+    "pricing.renewal_discount_forward_owner"
+  ],
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 0,
+  "passed": false,
+  "reasons": [
+    "expected forwards count 1, got 0",
+    "expected primary action 'forward' in ledger field 'forwards'",
+    "expected forward recipient to be non-empty",
+    "missing required fact id: acme.company_name",
+    "missing required fact id: acme.pro_plan",
+    "missing required fact id: acme.renewal_date_2026_08_30",
+    "missing required fact id: maya.account_owner_jordan",
+    "missing required fact id: pricing.renewal_discount_forward_owner",
+    "expected tool category 'inbox' was not used",
+    "expected tool category 'crm' was not used",
+    "expected tool category 'kb' was not used"
+  ],
+  "required_fact_ids_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude/claude-sonnet/sales_002",
+  "task_id": "sales_002",
+  "tool_categories": [],
+  "tool_categories_ok": false,
+  "wall_s": 1.1,
+  "warnings": []
+}

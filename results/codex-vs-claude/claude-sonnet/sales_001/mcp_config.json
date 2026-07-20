@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "email": {
+      "args": [
+        "/Users/aanyalari/benchmark/email-response-benchmark/server/email_mcp.py"
+      ],
+      "command": "python3",
+      "env": {
+        "EMAIL_BENCH_CALENDAR": "/Users/aanyalari/benchmark/email-response-benchmark/data/calendar.json",
+        "EMAIL_BENCH_CALLS_LOG": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude/claude-sonnet/sales_001/tool_calls.jsonl",
+        "EMAIL_BENCH_CRM": "/Users/aanyalari/benchmark/email-response-benchmark/data/crm.json",
+        "EMAIL_BENCH_INBOX": "/Users/aanyalari/benchmark/email-response-benchmark/data/inbox.json",
+        "EMAIL_BENCH_KB_DIR": "/Users/aanyalari/benchmark/email-response-benchmark/data/kb",
+        "EMAIL_BENCH_LEDGER": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude/claude-sonnet/sales_001/ledger.json"
+      }
+    }
+  }
+}

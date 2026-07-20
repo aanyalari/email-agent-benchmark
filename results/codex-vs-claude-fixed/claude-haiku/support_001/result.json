@@ -1,0 +1,43 @@
+{
+  "action_accuracy": true,
+  "agent": "claude-haiku",
+  "agent_kind": "claude",
+  "calendar_ok": true,
+  "evidence_fact_ids": [
+    "acme.pro_plan",
+    "maya.standard_tier",
+    "refund_policy.standard_not_eligible_after_30_days",
+    "refund_policy.window_30_days",
+    "support_001.purchase_date_2026_05_31",
+    "support_001.request_date_2026_07_15"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 1,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [],
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 5,
+  "passed": true,
+  "reasons": [],
+  "required_fact_ids_ok": true,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/support_001",
+  "task_id": "support_001",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 32.3,
+  "warnings": []
+}

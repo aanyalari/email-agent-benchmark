@@ -1,0 +1,25 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Eli,\n\nThank you for your interest in our platform for your care coordination team. We'd be happy to help you with pricing for 12 seats.\n\nYes, we do support annual billing, which can provide favorable pricing compared to monthly options. To provide you with an accurate quote tailored to your team's needs, I'm connecting you with Jordan, our account owner for BrightPath Care, who will follow up with you directly with detailed pricing information.\n\nJordan will also be able to discuss any customization options or volume discounts that may apply to your 12-seat deployment.\n\nBest regards",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "sales_001.pricing_for_12_seats",
+          "source": "inbox:sales_001"
+        },
+        {
+          "fact_id": "eli.account_owner_jordan",
+          "source": "crm:eli@brightpath.example"
+        }
+      ],
+      "thread_id": "sales_001"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

@@ -1,0 +1,45 @@
+{
+  "action_accuracy": false,
+  "agent": "claude-sonnet",
+  "agent_kind": "claude",
+  "calendar_ok": true,
+  "evidence_fact_ids": [
+    "escalation_policy.vip_complaints_require_escalation",
+    "northstar.company_name",
+    "priya.vip_tier",
+    "refund_policy.vip_store_credit_manager_approval",
+    "support_002.manager_requested",
+    "support_002.repeated_service_failures"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 1,
+    "escalations": 1,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [],
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 10,
+  "passed": false,
+  "reasons": [
+    "expected drafts count 0, got 1"
+  ],
+  "required_fact_ids_ok": true,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-sonnet/support_002",
+  "task_id": "support_002",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 42.6,
+  "warnings": []
+}

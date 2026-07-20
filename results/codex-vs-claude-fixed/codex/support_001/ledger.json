@@ -1,0 +1,49 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Maya,\n\nThanks for reaching out. I checked the purchase date for Acme Health's Pro plan, and because the request was made more than 30 days after purchase, we are not able to process a refund under our refund policy.\n\nI\u2019m sorry it wasn\u2019t the right fit for your operations team. Please let us know if there is anything specific we can help address on the account before the renewal date.\n\nBest,\nSupport",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "support_001.purchase_date_2026_05_31",
+          "source": "inbox:support_001"
+        },
+        {
+          "fact_id": "support_001.request_date_2026_07_15",
+          "source": "inbox:support_001"
+        },
+        {
+          "fact_id": "maya.standard_tier",
+          "source": "crm:maya@acme.example"
+        },
+        {
+          "fact_id": "acme.company_name",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "acme.pro_plan",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "acme.renewal_date_2026_08_30",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "refund_policy.window_30_days",
+          "source": "kb/refund_policy.md"
+        },
+        {
+          "fact_id": "refund_policy.standard_not_eligible_after_30_days",
+          "source": "kb/refund_policy.md"
+        }
+      ],
+      "thread_id": "support_001"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

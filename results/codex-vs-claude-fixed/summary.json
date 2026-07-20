@@ -1,0 +1,851 @@
+[
+  {
+    "action_accuracy": true,
+    "agent": "codex",
+    "agent_kind": "codex",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "acme.company_name",
+      "acme.pro_plan",
+      "acme.renewal_date_2026_08_30",
+      "maya.standard_tier",
+      "refund_policy.standard_not_eligible_after_30_days",
+      "refund_policy.window_30_days",
+      "support_001.purchase_date_2026_05_31",
+      "support_001.request_date_2026_07_15"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 5,
+    "passed": true,
+    "reasons": [],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/codex/support_001",
+    "task_id": "support_001",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 22.8,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "codex",
+    "agent_kind": "codex",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "escalation_policy.vip_complaints_require_escalation",
+      "northstar.company_name",
+      "priya.vip_tier",
+      "refund_policy.vip_store_credit_manager_approval",
+      "support_002.manager_requested",
+      "support_002.repeated_service_failures"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 0,
+      "escalations": 1,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 8,
+    "passed": true,
+    "reasons": [],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/codex/support_002",
+    "task_id": "support_002",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 28.7,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "codex",
+    "agent_kind": "codex",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "brightpath.company_name",
+      "pricing.annual_billing_two_months_free",
+      "pricing.pro_79_per_seat",
+      "pricing.starter_29_per_seat",
+      "sales_001.pricing_for_12_seats"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 7,
+    "passed": true,
+    "reasons": [],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/codex/sales_001",
+    "task_id": "sales_001",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 30.1,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "codex",
+    "agent_kind": "codex",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "acme.company_name",
+      "acme.existing_customer",
+      "acme.pro_plan",
+      "acme.renewal_date_2026_08_30",
+      "maya.account_owner_jordan",
+      "pricing.renewal_discount_forward_owner"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 0,
+      "escalations": 0,
+      "forwards": 1,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 8,
+    "passed": true,
+    "reasons": [],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/codex/sales_002",
+    "task_id": "sales_002",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 29.6,
+    "warnings": []
+  },
+  {
+    "action_accuracy": false,
+    "agent": "codex",
+    "agent_kind": "codex",
+    "calendar_ok": false,
+    "evidence_fact_ids": [],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "sched_001.requested_time_2026_07_17_14_00_ct",
+      "jordan.calendar_2026_07_17_14_00_available",
+      "eli.account_owner_jordan",
+      "sched_001.attendee_eli",
+      "sched_001.attendee_dana"
+    ],
+    "n_failed_tool_calls": 2,
+    "n_tool_calls": 14,
+    "passed": false,
+    "reasons": [
+      "expected drafts count 0, got 1",
+      "expected scheduled_meetings count 1, got 0",
+      "expected primary action 'schedule_meeting' in ledger field 'scheduled_meetings'",
+      "missing required fact id: sched_001.requested_time_2026_07_17_14_00_ct",
+      "missing required fact id: jordan.calendar_2026_07_17_14_00_available",
+      "missing required fact id: eli.account_owner_jordan",
+      "missing required fact id: sched_001.attendee_eli",
+      "missing required fact id: sched_001.attendee_dana",
+      "expected scheduled meeting record for task"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/codex/sched_001",
+    "task_id": "sched_001",
+    "tool_categories": [
+      "action",
+      "calendar",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 62.0,
+    "warnings": [
+      "2 failed tool call(s) recorded"
+    ]
+  },
+  {
+    "action_accuracy": true,
+    "agent": "codex",
+    "agent_kind": "codex",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "jordan.calendar_2026_07_17_13_00_existing_demo",
+      "sam.account_owner_jordan",
+      "sched_002.requested_time_2026_07_17_13_00_ct",
+      "sched_hard_001.converted_time_2026_07_20_10_00_ct"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "jordan.calendar_2026_07_17_14_00_available",
+      "jordan.calendar_2026_07_17_15_00_available"
+    ],
+    "n_failed_tool_calls": 1,
+    "n_tool_calls": 9,
+    "passed": false,
+    "reasons": [
+      "missing required fact id: jordan.calendar_2026_07_17_14_00_available",
+      "missing required fact id: jordan.calendar_2026_07_17_15_00_available"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/codex/sched_002",
+    "task_id": "sched_002",
+    "tool_categories": [
+      "action",
+      "calendar",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 49.1,
+    "warnings": [
+      "1 failed tool call(s) recorded"
+    ]
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-haiku",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "acme.pro_plan",
+      "maya.standard_tier",
+      "refund_policy.standard_not_eligible_after_30_days",
+      "refund_policy.window_30_days",
+      "support_001.purchase_date_2026_05_31",
+      "support_001.request_date_2026_07_15"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 5,
+    "passed": true,
+    "reasons": [],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/support_001",
+    "task_id": "support_001",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 32.3,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-haiku",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "northstar.company_name",
+      "priya.vip_tier",
+      "support_002.manager_requested",
+      "support_002.repeated_service_failures"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 0,
+      "escalations": 1,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "escalation_policy.vip_complaints_require_escalation"
+    ],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 4,
+    "passed": false,
+    "reasons": [
+      "missing required fact id: escalation_policy.vip_complaints_require_escalation"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/support_002",
+    "task_id": "support_002",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 23.8,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-haiku",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "eli.account_owner_jordan",
+      "sales_001.pricing_for_12_seats"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "brightpath.company_name",
+      "pricing.starter_29_per_seat",
+      "pricing.pro_79_per_seat",
+      "pricing.annual_billing_two_months_free"
+    ],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 6,
+    "passed": false,
+    "reasons": [
+      "missing required fact id: brightpath.company_name",
+      "missing required fact id: pricing.starter_29_per_seat",
+      "missing required fact id: pricing.pro_79_per_seat",
+      "missing required fact id: pricing.annual_billing_two_months_free"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/sales_001",
+    "task_id": "sales_001",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 27.6,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-haiku",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "acme.existing_customer",
+      "acme.pro_plan",
+      "acme.renewal_date_2026_08_30",
+      "pricing.renewal_discount_forward_owner"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": false,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 0,
+      "escalations": 0,
+      "forwards": 1,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "acme.company_name",
+      "maya.account_owner_jordan"
+    ],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 6,
+    "passed": false,
+    "reasons": [
+      "missing required fact id: acme.company_name",
+      "missing required fact id: maya.account_owner_jordan",
+      "forbidden claim present: discount will carry over"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/sales_002",
+    "task_id": "sales_002",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 29.9,
+    "warnings": []
+  },
+  {
+    "action_accuracy": false,
+    "agent": "claude-haiku",
+    "agent_kind": "claude",
+    "calendar_ok": false,
+    "evidence_fact_ids": [],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "sched_001.requested_time_2026_07_17_14_00_ct",
+      "jordan.calendar_2026_07_17_14_00_available",
+      "eli.account_owner_jordan",
+      "sched_001.attendee_eli",
+      "sched_001.attendee_dana"
+    ],
+    "n_failed_tool_calls": 2,
+    "n_tool_calls": 4,
+    "passed": false,
+    "reasons": [
+      "expected drafts count 0, got 1",
+      "expected scheduled_meetings count 1, got 0",
+      "expected primary action 'schedule_meeting' in ledger field 'scheduled_meetings'",
+      "missing required fact id: sched_001.requested_time_2026_07_17_14_00_ct",
+      "missing required fact id: jordan.calendar_2026_07_17_14_00_available",
+      "missing required fact id: eli.account_owner_jordan",
+      "missing required fact id: sched_001.attendee_eli",
+      "missing required fact id: sched_001.attendee_dana",
+      "expected scheduled meeting record for task",
+      "1 failed action tool call(s)",
+      "expected tool category 'crm' was not used",
+      "expected tool category 'kb' was not used"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/sched_001",
+    "task_id": "sched_001",
+    "tool_categories": [
+      "action",
+      "calendar",
+      "inbox"
+    ],
+    "tool_categories_ok": false,
+    "wall_s": 69.2,
+    "warnings": [
+      "2 failed tool call(s) recorded"
+    ]
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-haiku",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "sched_002.requested_time_2026_07_17_13_00_ct"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "jordan.calendar_2026_07_17_13_00_existing_demo",
+      "jordan.calendar_2026_07_17_14_00_available",
+      "jordan.calendar_2026_07_17_15_00_available",
+      "sam.account_owner_jordan"
+    ],
+    "n_failed_tool_calls": 2,
+    "n_tool_calls": 4,
+    "passed": false,
+    "reasons": [
+      "missing required fact id: jordan.calendar_2026_07_17_13_00_existing_demo",
+      "missing required fact id: jordan.calendar_2026_07_17_14_00_available",
+      "missing required fact id: jordan.calendar_2026_07_17_15_00_available",
+      "missing required fact id: sam.account_owner_jordan",
+      "expected tool category 'crm' was not used",
+      "expected tool category 'kb' was not used"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/sched_002",
+    "task_id": "sched_002",
+    "tool_categories": [
+      "action",
+      "calendar",
+      "inbox"
+    ],
+    "tool_categories_ok": false,
+    "wall_s": 35.4,
+    "warnings": [
+      "2 failed tool call(s) recorded"
+    ]
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-sonnet",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "maya.standard_tier",
+      "refund_policy.standard_not_eligible_after_30_days",
+      "refund_policy.window_30_days",
+      "support_001.purchase_date_2026_05_31",
+      "support_001.request_date_2026_07_15"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 4,
+    "passed": true,
+    "reasons": [],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-sonnet/support_001",
+    "task_id": "support_001",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 25.7,
+    "warnings": []
+  },
+  {
+    "action_accuracy": false,
+    "agent": "claude-sonnet",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "escalation_policy.vip_complaints_require_escalation",
+      "northstar.company_name",
+      "priya.vip_tier",
+      "refund_policy.vip_store_credit_manager_approval",
+      "support_002.manager_requested",
+      "support_002.repeated_service_failures"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 1,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 10,
+    "passed": false,
+    "reasons": [
+      "expected drafts count 0, got 1"
+    ],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-sonnet/support_002",
+    "task_id": "support_002",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 42.6,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-sonnet",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "brightpath.company_name",
+      "pricing.annual_billing_two_months_free",
+      "pricing.pro_79_per_seat",
+      "pricing.starter_29_per_seat",
+      "sales_001.pricing_for_12_seats"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 6,
+    "passed": true,
+    "reasons": [],
+    "required_fact_ids_ok": true,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-sonnet/sales_001",
+    "task_id": "sales_001",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 23.9,
+    "warnings": []
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-sonnet",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "acme.pro_plan",
+      "acme.renewal_date_2026_08_30",
+      "maya.account_owner_jordan",
+      "pricing.renewal_discount_forward_owner"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 0,
+      "escalations": 0,
+      "forwards": 1,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "acme.company_name"
+    ],
+    "n_failed_tool_calls": 0,
+    "n_tool_calls": 9,
+    "passed": false,
+    "reasons": [
+      "missing required fact id: acme.company_name"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-sonnet/sales_002",
+    "task_id": "sales_002",
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 25.0,
+    "warnings": []
+  },
+  {
+    "action_accuracy": false,
+    "agent": "claude-sonnet",
+    "agent_kind": "claude",
+    "calendar_ok": false,
+    "evidence_fact_ids": [],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "sched_001.requested_time_2026_07_17_14_00_ct",
+      "jordan.calendar_2026_07_17_14_00_available",
+      "eli.account_owner_jordan",
+      "sched_001.attendee_eli",
+      "sched_001.attendee_dana"
+    ],
+    "n_failed_tool_calls": 2,
+    "n_tool_calls": 9,
+    "passed": false,
+    "reasons": [
+      "expected drafts count 0, got 1",
+      "expected scheduled_meetings count 1, got 0",
+      "expected primary action 'schedule_meeting' in ledger field 'scheduled_meetings'",
+      "missing required fact id: sched_001.requested_time_2026_07_17_14_00_ct",
+      "missing required fact id: jordan.calendar_2026_07_17_14_00_available",
+      "missing required fact id: eli.account_owner_jordan",
+      "missing required fact id: sched_001.attendee_eli",
+      "missing required fact id: sched_001.attendee_dana",
+      "expected scheduled meeting record for task"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-sonnet/sched_001",
+    "task_id": "sched_001",
+    "tool_categories": [
+      "action",
+      "calendar",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 56.4,
+    "warnings": [
+      "2 failed tool call(s) recorded"
+    ]
+  },
+  {
+    "action_accuracy": true,
+    "agent": "claude-sonnet",
+    "agent_kind": "claude",
+    "calendar_ok": true,
+    "evidence_fact_ids": [
+      "jordan.calendar_2026_07_17_13_00_existing_demo",
+      "sched_002.requested_time_2026_07_17_13_00_ct"
+    ],
+    "exit_code": 0,
+    "exit_status": "ok",
+    "forbidden_claims_ok": true,
+    "ledger_counts": {
+      "crm_updates": 0,
+      "drafts": 1,
+      "escalations": 0,
+      "forwards": 0,
+      "ignored_threads": 0,
+      "scheduled_meetings": 0,
+      "sent_emails": 0
+    },
+    "missing_required_fact_ids": [
+      "jordan.calendar_2026_07_17_14_00_available",
+      "jordan.calendar_2026_07_17_15_00_available",
+      "sam.account_owner_jordan"
+    ],
+    "n_failed_tool_calls": 1,
+    "n_tool_calls": 6,
+    "passed": false,
+    "reasons": [
+      "missing required fact id: jordan.calendar_2026_07_17_14_00_available",
+      "missing required fact id: jordan.calendar_2026_07_17_15_00_available",
+      "missing required fact id: sam.account_owner_jordan"
+    ],
+    "required_fact_ids_ok": false,
+    "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-sonnet/sched_002",
+    "task_id": "sched_002",
+    "tool_categories": [
+      "action",
+      "calendar",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 45.1,
+    "warnings": [
+      "1 failed tool call(s) recorded"
+    ]
+  }
+]

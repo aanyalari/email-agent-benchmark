@@ -1,0 +1,48 @@
+{
+  "action_accuracy": true,
+  "agent": "claude-haiku",
+  "agent_kind": "claude",
+  "calendar_ok": true,
+  "evidence_fact_ids": [
+    "acme.existing_customer",
+    "acme.pro_plan",
+    "acme.renewal_date_2026_08_30",
+    "pricing.renewal_discount_forward_owner"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": false,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 0,
+    "escalations": 0,
+    "forwards": 1,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [
+    "acme.company_name",
+    "maya.account_owner_jordan"
+  ],
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 6,
+  "passed": false,
+  "reasons": [
+    "missing required fact id: acme.company_name",
+    "missing required fact id: maya.account_owner_jordan",
+    "forbidden claim present: discount will carry over"
+  ],
+  "required_fact_ids_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/sales_002",
+  "task_id": "sales_002",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 29.9,
+  "warnings": []
+}

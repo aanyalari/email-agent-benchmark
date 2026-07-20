@@ -1,0 +1,41 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Maya,\n\nThank you for reaching out about your refund request for the Pro plan. I understand that the plan hasn't been the right fit for your operations team, and I appreciate you giving it a try.\n\nOur refund policy allows for full refunds within 30 days of purchase. Since your purchase was on May 31 and your request was received on July 15, it falls outside our standard refund window, and I'm unable to process a refund at this time.\n\nHowever, I'd like to help find a solution that works better for Acme Health. A few options:\n\n1. **Reach out to your account owner** (jordan@company.example) to discuss whether there are different features or configurations that might work better for your team\n2. **Explore our other plan options** that might be a better fit for your operations team's needs\n\nI'm happy to assist with either of these paths, or if you have other questions, please let me know.\n\nBest regards,\nSupport Team",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "support_001.purchase_date_2026_05_31",
+          "source": "inbox:support_001"
+        },
+        {
+          "fact_id": "support_001.request_date_2026_07_15",
+          "source": "inbox:support_001"
+        },
+        {
+          "fact_id": "maya.standard_tier",
+          "source": "crm:maya@acme.example"
+        },
+        {
+          "fact_id": "acme.pro_plan",
+          "source": "crm:company/acme"
+        },
+        {
+          "fact_id": "refund_policy.window_30_days",
+          "source": "kb/refund_policy.md"
+        },
+        {
+          "fact_id": "refund_policy.standard_not_eligible_after_30_days",
+          "source": "kb/refund_policy.md"
+        }
+      ],
+      "thread_id": "support_001"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

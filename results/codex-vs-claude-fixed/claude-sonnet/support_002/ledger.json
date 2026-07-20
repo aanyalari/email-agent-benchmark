@@ -1,0 +1,65 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Priya,\n\nI'm sorry for the disruption this outage caused to your morning executive report \u2014 I understand this is frustrating, especially given the recurring issues this quarter.\n\nI've escalated this thread to your account owner and our support manager right now so a manager can reach out to you directly today, as you requested. They will review the outage history and follow up with next steps, including any applicable credit, before your renewal.\n\nThank you for your patience, and I apologize for the impact this has had on your team.\n\nBest regards,\nSupport Team",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "support_002.manager_requested",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "support_002.repeated_service_failures",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "priya.vip_tier",
+          "source": "crm:priya@northstar.example"
+        },
+        {
+          "fact_id": "escalation_policy.vip_complaints_require_escalation",
+          "source": "kb/escalation_policy.md"
+        }
+      ],
+      "thread_id": "support_002"
+    }
+  ],
+  "escalations": [
+    {
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "support_002.repeated_service_failures",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "support_002.manager_requested",
+          "source": "inbox:support_002"
+        },
+        {
+          "fact_id": "priya.vip_tier",
+          "source": "crm:priya@northstar.example"
+        },
+        {
+          "fact_id": "northstar.company_name",
+          "source": "crm:company/northstar"
+        },
+        {
+          "fact_id": "escalation_policy.vip_complaints_require_escalation",
+          "source": "kb/escalation_policy.md"
+        },
+        {
+          "fact_id": "refund_policy.vip_store_credit_manager_approval",
+          "source": "kb/refund_policy.md"
+        }
+      ],
+      "reason": "VIP customer complaint requiring account owner/manager involvement before any credit or refund is promised. Customer: Priya Raman (VP of Operations), Northstar Clinics (enterprise plan, VIP tier, renewal date 2026-08-01, account owner taylor@company.example). Complaint: export outage blocked their morning executive report; customer states this is the third service issue this quarter (repeated service failures) and explicitly requested manager involvement today. Requested outcome: manager contact and clarity on credit/refund before renewal decision. Per escalation policy, VIP complaints citing repeated service failures and renewal-related concerns must be escalated before promising any credit, refund, or contractual remedy.",
+      "thread_id": "support_002"
+    }
+  ],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

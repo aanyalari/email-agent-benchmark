@@ -1,0 +1,41 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Eli,\n\nThanks for confirming. The Friday, July 17 at 2:00 PM Central slot has already passed, so could you and Dana send over a few updated times that work for the demo?\n\nI\u2019ll make sure Dana is included once we have a current time to schedule.\n\nBest,",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "sched_001.requested_time_2026_07_17_14_00_ct",
+          "source": "inbox:sched_001"
+        },
+        {
+          "fact_id": "sched_001.attendee_eli",
+          "source": "inbox:sched_001"
+        },
+        {
+          "fact_id": "sched_001.attendee_dana",
+          "source": "inbox:sched_001"
+        },
+        {
+          "fact_id": "eli.account_owner_jordan",
+          "source": "crm:eli@brightpath.example"
+        },
+        {
+          "fact_id": "brightpath.company_name",
+          "source": "crm:company/brightpath"
+        },
+        {
+          "fact_id": "jordan.calendar_2026_07_17_14_00_available",
+          "source": "calendar:jordan@company.example"
+        }
+      ],
+      "thread_id": "sched_001"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

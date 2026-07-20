@@ -1,0 +1,42 @@
+{
+  "action_accuracy": true,
+  "agent": "codex",
+  "agent_kind": "codex",
+  "calendar_ok": true,
+  "evidence_fact_ids": [
+    "brightpath.company_name",
+    "pricing.annual_billing_two_months_free",
+    "pricing.pro_79_per_seat",
+    "pricing.starter_29_per_seat",
+    "sales_001.pricing_for_12_seats"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 1,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [],
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 7,
+  "passed": true,
+  "reasons": [],
+  "required_fact_ids_ok": true,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/codex/sales_001",
+  "task_id": "sales_001",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 30.1,
+  "warnings": []
+}

@@ -1,0 +1,37 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Eli,\n\nThanks for reaching out! Happy to share pricing for a 12-person team.\n\n- Starter plan: $29/seat/month \u2192 $348/month for 12 seats\n- Pro plan: $79/seat/month \u2192 $948/month for 12 seats\n\nWe also offer annual billing on both plans, which includes two months free (effectively paying for 10 months of service across the year).\n\nFor a care coordination team, the Pro plan tends to be the best fit if you need more advanced features\u2014happy to walk through the differences on a call if that's helpful.\n\nLet me know if you'd like to set up a demo or have any other questions!\n\nBest,\nSales Team",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "sales_001.pricing_for_12_seats",
+          "source": "inbox:sales_001"
+        },
+        {
+          "fact_id": "pricing.starter_29_per_seat",
+          "source": "kb/pricing.md"
+        },
+        {
+          "fact_id": "pricing.pro_79_per_seat",
+          "source": "kb/pricing.md"
+        },
+        {
+          "fact_id": "pricing.annual_billing_two_months_free",
+          "source": "kb/pricing.md"
+        },
+        {
+          "fact_id": "brightpath.company_name",
+          "source": "crm:company/brightpath"
+        }
+      ],
+      "thread_id": "sales_001"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

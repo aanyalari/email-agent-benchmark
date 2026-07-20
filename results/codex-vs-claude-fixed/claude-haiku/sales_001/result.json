@@ -1,0 +1,49 @@
+{
+  "action_accuracy": true,
+  "agent": "claude-haiku",
+  "agent_kind": "claude",
+  "calendar_ok": true,
+  "evidence_fact_ids": [
+    "eli.account_owner_jordan",
+    "sales_001.pricing_for_12_seats"
+  ],
+  "exit_code": 0,
+  "exit_status": "ok",
+  "forbidden_claims_ok": true,
+  "ledger_counts": {
+    "crm_updates": 0,
+    "drafts": 1,
+    "escalations": 0,
+    "forwards": 0,
+    "ignored_threads": 0,
+    "scheduled_meetings": 0,
+    "sent_emails": 0
+  },
+  "missing_required_fact_ids": [
+    "brightpath.company_name",
+    "pricing.starter_29_per_seat",
+    "pricing.pro_79_per_seat",
+    "pricing.annual_billing_two_months_free"
+  ],
+  "n_failed_tool_calls": 0,
+  "n_tool_calls": 6,
+  "passed": false,
+  "reasons": [
+    "missing required fact id: brightpath.company_name",
+    "missing required fact id: pricing.starter_29_per_seat",
+    "missing required fact id: pricing.pro_79_per_seat",
+    "missing required fact id: pricing.annual_billing_two_months_free"
+  ],
+  "required_fact_ids_ok": false,
+  "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/codex-vs-claude-fixed/claude-haiku/sales_001",
+  "task_id": "sales_001",
+  "tool_categories": [
+    "action",
+    "crm",
+    "inbox",
+    "kb"
+  ],
+  "tool_categories_ok": true,
+  "wall_s": 27.6,
+  "warnings": []
+}

@@ -1,0 +1,37 @@
+{
+  "crm_updates": [],
+  "drafts": [
+    {
+      "body": "Hi Maya,\n\nThank you for reaching out, and I'm sorry the Pro plan didn't end up being the right fit for your operations team.\n\nI looked into your account: our records show the Pro plan was purchased on May 31, 2026, and your refund request came in on July 15, 2026 \u2014 45 days later. Our refund policy allows full refunds within 30 days of purchase, so unfortunately this request falls outside that window and we're not able to process a refund to your card.\n\nIf you'd like, I'm happy to discuss other options, such as adjusting your plan going forward or addressing any specific issues your team ran into. Just let me know how you'd like to proceed.\n\nBest regards,\nSupport Team",
+      "created_by": "agent",
+      "evidence": [
+        {
+          "fact_id": "support_001.purchase_date_2026_05_31",
+          "source": "inbox:support_001"
+        },
+        {
+          "fact_id": "support_001.request_date_2026_07_15",
+          "source": "inbox:support_001"
+        },
+        {
+          "fact_id": "refund_policy.window_30_days",
+          "source": "kb/refund_policy.md"
+        },
+        {
+          "fact_id": "refund_policy.standard_not_eligible_after_30_days",
+          "source": "kb/refund_policy.md"
+        },
+        {
+          "fact_id": "maya.standard_tier",
+          "source": "crm:maya@acme.example"
+        }
+      ],
+      "thread_id": "support_001"
+    }
+  ],
+  "escalations": [],
+  "forwards": [],
+  "ignored_threads": [],
+  "scheduled_meetings": [],
+  "sent_emails": []
+}

@@ -4,16 +4,14 @@
     "agent": "claude-haiku",
     "agent_kind": "claude",
     "calendar_ok": true,
-    "critical_tool_calls_ok": true,
-    "crm_ok": false,
     "evidence_fact_ids": [],
-    "exit_code": 1,
-    "exit_status": "exit=1",
+    "exit_code": 0,
+    "exit_status": "ok",
     "forbidden_claims_ok": true,
     "ledger_counts": {
       "crm_updates": 0,
       "drafts": 0,
-      "escalations": 0,
+      "escalations": 1,
       "forwards": 0,
       "ignored_threads": 0,
       "scheduled_meetings": 0,
@@ -25,34 +23,29 @@
       "support_001.request_date_2026_07_15",
       "maya.standard_tier"
     ],
-    "n_failed_action_tool_calls": 0,
     "n_failed_tool_calls": 0,
-    "n_tool_calls": 0,
+    "n_tool_calls": 4,
     "passed": false,
     "reasons": [
       "expected drafts count 1, got 0",
+      "expected escalations count 0, got 1",
       "expected primary action 'draft' in ledger field 'drafts'",
       "missing required fact id: refund_policy.window_30_days",
       "missing required fact id: support_001.purchase_date_2026_05_31",
       "missing required fact id: support_001.request_date_2026_07_15",
-      "missing required fact id: maya.standard_tier",
-      "expected tool category 'inbox' was not used",
-      "expected tool category 'crm' was not used",
-      "expected tool category 'kb' was not used"
+      "missing required fact id: maya.standard_tier"
     ],
     "required_fact_ids_ok": false,
-    "required_facts_ok": false,
-    "required_facts_text_ok": false,
     "run_dir": "/Users/aanyalari/benchmark/email-response-benchmark/results/claude-debug/claude-haiku/support_001",
     "task_id": "support_001",
-    "tool_categories": [],
-    "tool_categories_ok": false,
-    "wall_s": 2.1,
-    "warnings": [
-      "legacy text check: missing required fact: refund window is 30 days",
-      "legacy text check: missing required fact: customer purchased on 2026-05-31",
-      "legacy text check: missing required fact: customer requested the refund on 2026-07-15",
-      "legacy text check: missing required fact: customer is standard tier"
-    ]
+    "tool_categories": [
+      "action",
+      "crm",
+      "inbox",
+      "kb"
+    ],
+    "tool_categories_ok": true,
+    "wall_s": 32.4,
+    "warnings": []
   }
 ]
